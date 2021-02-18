@@ -28,3 +28,4 @@ To create a new page:
     ```
 3. Go to app.js and import the new .js-file and create a route inside the constructor. See the routes to know how it should look.
 4. Create a new folder in /Components, name it appropriately. Create a content.js-file inside that folder and create the class (See the example in step 2).
+5. (If you want to add a button to the header): Go to header.js and create a button like the ones that are there, and fill out the switch-case.
