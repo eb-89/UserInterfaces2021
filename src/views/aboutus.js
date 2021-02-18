@@ -1,12 +1,11 @@
 /**
- * This page will probably be something else eventually
- * This is the About us-page: initializing and renders the page
+ * This is the About us-page: initializing and renders the content of the page
  */
 import Header from "../components/header.js";
 import Page from "../components/page.js";
 import Content from "../components/aboutUsPage/content.js";
 
-export default class MainPage {
+export default class AboutUsPage {
     constructor() {
         this.header = new Header('about us');
         this.page = new Page();

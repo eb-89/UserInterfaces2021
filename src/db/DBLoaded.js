@@ -1,4 +1,4 @@
-var DB = {
+const DB = {
     "users": [
         {
             "user_id": "2",
@@ -1148,3 +1148,5 @@ var DB = {
         }
     ]
 };
+
+export {DB};

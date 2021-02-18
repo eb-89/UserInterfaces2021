@@ -1,5 +1,5 @@
 /**
- * This page will contain the content of the About Us-page (views/aboutus.js)
+ * This page will create all the content of the About Us-page (views/aboutus.js)
  */
 
 export default class Content {
