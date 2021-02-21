@@ -1,0 +1,32 @@
+/*
+
+TEXT-styling
+
+*/
+.title {
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #00695c;
+    font-size: 16px;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.subtitle {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #4db6ac;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bold {
+    font-weight: 700;
+    color: black;
+    font-size: 16px;
+}
