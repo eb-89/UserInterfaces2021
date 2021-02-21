@@ -1,4 +1,4 @@
-// Overrides the default history.pushState
+// Overrides the default history.pushState (from using 3 arguments when calling it, to 2 arguments since we will probably not use 3 arguments)
 (function(history){
     var pushState = history.pushState;
     history.pushState = function(state, path) {
@@ -36,6 +36,7 @@ export default class Router {
         }
     }
 
+    // Updates the title when changing page
     updateTitle = title => {
         document.title = title + " - The Flying Dutchman";
     }

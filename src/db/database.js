@@ -8,7 +8,6 @@
 // We use (global) variables to store the data. This is not generally advisable, but has the
 // advantage that the data is easy to access through simple APIs. Also, when storing as local storage,
 // all data is stored as strings, which might be adding some complexity.
-//
 
 export default class Database {
     constructor(DB, DB2) {
@@ -111,6 +110,38 @@ export default class Database {
         }
         //
         return collector;
+    }
+
+    // =====================================================================================================
+    // Returns a list of all the beverages:
+    // returns: 
+    //
+    allBeveragesMoreDetailed() {
+        // Using a local variable to collect the items.
+        let collector = []
+
+        for (let i = 0; i < this.DB2.spirits.length; i++) {
+            collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
+                this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning))
+        }
+
+        // The DB is stored in the variable DB2, with "spirits" as key element. If you need to select only certain
+        // items, you may introduce filter functions in the loop... see the template within comments.
+        return collector;
+    }
+    
+    __allBeveragesMoreDetailed(namn, pris, varugrupp, land, producent, alkoholhalt, forpackning) {
+        let collectorJSON = {
+                            "namn": namn, 
+                            "pris": pris, 
+                            "varugrupp": varugrupp, 
+                            "land": land, 
+                            "producent": producent,
+                            "alkoholhalt": alkoholhalt,
+                            "forpackning": forpackning
+                            };
+        return collectorJSON;
+
     }
 
     // =====================================================================================================

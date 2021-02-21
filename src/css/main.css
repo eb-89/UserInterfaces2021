@@ -1,3 +1,9 @@
+/*
+
+GENERAL PAGE
+
+*/
+
 #root {
   height: 100%;
 }
@@ -32,60 +38,4 @@ html,body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/*
-
-ABOUT US
-
-*/
-.info-page-container {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #00695C;
-  border-radius: 8px;
-  background-color: #B2DFDB;
-  width: 50%;
-  justify-content: center;
-  color: #00695C;
-  padding: 8px 16px;
-}
-
-
-/*
-
-HEADER
-
-*/
-
-.header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-}
-
-.header > .header-button {
-  height: 48px;
-  font-size: 16px;
-  padding-left: 8px;
-  padding-right: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
-  user-select: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-}
-
-.header > .header-button:hover {
-  color: #B2DFDB;
-}
-
-
-.header > .header-button.active {
-  color: #00695C;
 }
