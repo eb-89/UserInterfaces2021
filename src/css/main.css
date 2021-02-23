@@ -1,7 +1,13 @@
 /*
 
-GENERAL PAGE
+GENERAL PAGE CSS
 
+*/
+
+/*
+text-color/border: #341001
+color-cards/icons/etc: #F1E9CD
+font-family: Old Standard TT
 */
 
 #root {
@@ -19,14 +25,13 @@ GENERAL PAGE
 html,body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Old Standard TT';
   height: 100%;
   min-height: 100%;
-  background: hsl(177deg 41% 97%);
+  background: url('../img/img_background.png') no-repeat fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: '100%';
-  font-size: 16px;
 }
 
 .page {
