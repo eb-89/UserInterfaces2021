@@ -1,13 +1,40 @@
 /*
 
-TEXT-styling
+TEXT CSS
 
 */
 .title {
     letter-spacing: 1px;
     font-weight: 700;
-    color: #00695c;
+    color: #341001;
     font-size: 16px;
+}
+
+.title.bold {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.button.title {
+    letter-spacing: 1px;
+    font-family: "Old Standard TT";
+    font-weight: 600;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.subtitle {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #341001;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.subtitle.bold {
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .ellipsis {
@@ -16,17 +43,13 @@ TEXT-styling
     text-overflow: ellipsis;
 }
 
-.subtitle {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #4db6ac;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.bold {
-    font-weight: 700;
-    color: black;
-    font-size: 16px;
+/* Disable selection of text */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
 }
