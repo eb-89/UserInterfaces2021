@@ -20,17 +20,21 @@ export default class Content {
 
         const content = $('<div class="vip-page-container"></div>');
 
+        let item = $('<div class="item"></div>');
+        let inner = $('<div class="inner-item"></div>');
 
-        let item = $('<div class="item-inner"></div>');
-        item.append($('<div class="item-name">Password of combination lock</div>'));
-        item.append($('<div class="item-desc">' + this.getPassword() + '</div>'));
+        inner.append($('<div class="item-name">Password of combination lock</div>'));
+        inner.append($('<div class="item-desc">' + this.getPassword() + '</div>'));
+        $(item).append(inner);
         $(content).append(item);
 
-        item = $('<div class="item-inner"></div>');
-        item.append($('<div class="item-name">account balance</div>'));
-        item.append($('<div class="item-desc">' + 1234 + '</div>'));
-        $(content).append(item);
 
+        item = $('<div class="item"></div>');
+        inner = $('<div class="inner-item"></div>');
+        inner.append($('<div class="item-name">account balance</div>'));
+        inner.append($('<div class="item-desc">' + 1234 + '</div>'));
+        $(item).append(inner);
+        $(content).append(item);
 
         // var content = $('<div class="info-page-container">' +
         //                     '<p>Menu VIP test</p>'+
