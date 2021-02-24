@@ -1,24 +1,145 @@
+
+/*Styles for user security*/
+
+
 .security-form-container {
   width: 40%;
   margin-bottom: 20px;
 }
 
-.message {
-  margin-bottom: 20px;
-  display: inline-block;
-  padding: 10px;
+.heading.light {
+  color: #f1e9cd;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.success {
+.button-on-light.bordered {
+  transition: none;
+  padding: 10px 20px;
+  box-shadow:
+    0 0 0 1px #f1e9cd,
+    0 0 0 5px #341001,
+    0 0 0 6px #f1e9cd;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.button-on-light.bordered:active {
+  transition: none;
+  background-color: #f1e9cd;
+  color: #341001;
+}
+
+.subtitle.info {
+  padding: 10px 30px;
+  margin: 20px 10px;
+  color: white;
+  border-radius: 3px;
+}
+
+.subtitle.success {
   background-color: green
 }
 
-.error {
+.subtitle.error {
   background-color: red
 }
 
 .security-form-container > textarea {
   width: 100%;
-  height: 400px;
+  height: 250px;
   resize: none;
+  padding: 20px;
+  background-color: #f1e9cd;
+}
+
+.dbordered.light {
+    box-shadow:
+    0 0 0 1px #341001,
+    0 0 0 5px #f1e9cd,
+    0 0 0 6px #341001;
+  font-family: 'Old Standard TT';
+  font-size: 14px;
+  background-color: #f1e9cd;
+}
+
+/* Styles for admin security */
+
+.button-remove {
+  font-size: 8px;
+  font-weight: bolder; 
+  float: right;
+  background-color: darkred;
+  padding: 3px;
+  border-radius: 2px;
+  color: white;
+  user-select: none
+}
+
+.button-remove:hover {
+  background-color: pink;
+}
+
+
+.security-item {
+  position: relative;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #dad1b0;
+  border: 1px #341001 solid;
+  margin: 5px 0; 
+}
+
+.security-item.selected {
+  background-color: #341001;
+  color: white;
+}
+
+
+.security-item:hover {
+  background-color: #c7956e;
+  color: white;
+}
+
+.security-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 12px;
+}
+
+.security-item-preview {
+  margin-top: 10px;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.security-flex-container {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+}
+.security-flex-container > .area {
+  padding: 10px;
+  margin: 0 10px;
+  height: 400px; 
+
+}
+
+.area.col {
+  width: 200px;
+  overflow: auto;
+}
+
+
+
+.area.show {
+  width: 100%;
 }

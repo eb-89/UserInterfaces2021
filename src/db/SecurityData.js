@@ -1,33 +1,39 @@
 
+/**
+ *  Maintains security Data
+ */
+
 
 export default class SecurityData {
     constructor() {
       this.data = []
-      this.updateCallbacks = []
+      this.insertCallbacks = []
+      this.currentCount = 0;
     }
 
     addItem = (item, onSuccessCallback) => {
+      item.id = this.currentCount;
       this.data.push(item)
       onSuccessCallback(item);
 
-      for (cb of this.updateCallbacks) {
+      for (let cb of this.insertCallbacks) {
         cb(item);
       }
 
+      this.currentCount++
     }
 
-    // Simplified PubSub
-    registerInsertCallback(cb) {
-      this.updateCallbacks.push(cb)
 
-      const unsubscribe = () => {
-        console.log(this.updateCallbacks)
-        this.updateCallbacks.splice(this.updateCallbacks.indexOf(cb), 1)
-        console.log(this.updateCallbacks)
+    // We will probably not need this, but you can register a function to run on insert.
+    registerInsertCallback(cb) {
+      this.insertCallbacks.push(cb)
+
+      const unregister = () => {
+        this.insertCallbacks.splice(this.insertCallbacks.indexOf(cb), 1)
       }
 
       return {
-        unsubscribe: unsubscribe
+        unregister: unregister
       }
     }
 
@@ -39,6 +45,4 @@ export default class SecurityData {
     getAllItems = () => {
       return this.data
     }
-
-
 }
