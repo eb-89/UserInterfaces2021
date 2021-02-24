@@ -27,6 +27,10 @@ export default class Header {
         $(securityButton).on("click", () => {
             history.pushState("Security", "/security");
         });
+        var securityAdminButton = $('<div class="header-button">Security Admin</div>');
+        $(securityAdminButton).on("click", () => {
+            history.pushState("SecurityAdmin", "/securityAdmin");
+        });
         var ordersButton = $('<div class="header-button">Orders</div>');
         $(ordersButton).on("click", () => {
             history.pushState("Orders", "/orders");
@@ -62,6 +66,10 @@ export default class Header {
                 $(securityButton).addClass("active");
                 break;
             }
+            case "securityAdmin": {
+                $(securityAdminButton).addClass("active");
+                break;
+            }
             case "orders": {
                 $(ordersButton).addClass("active");
                 break;
@@ -83,6 +91,7 @@ export default class Header {
         $(header).append(aboutUsButton);
         $(header).append(logInButton);
         $(header).append(securityButton);
+        $(header).append(securityAdminButton);
         $(header).append(ordersButton);
         $(header).append(productsButton);
         $(header).append(menuVipButton);
