@@ -152,7 +152,7 @@ MENU
     left: 0;
 }
 
-.header > .lang {
+.header-container > .lang {
   position: absolute;
   top: 10px;
   left: 10px;

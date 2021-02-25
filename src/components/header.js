@@ -34,7 +34,7 @@ export default class Header {
                     window.lang.generateStrings($("#root"))
                 } )
             });
-        $(header).append(languageSelector);
+        $(header).prepend(languageSelector);
         window.lang.generateStrings(header);
         return header;
     };
