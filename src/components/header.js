@@ -16,6 +16,26 @@ export default class Header {
 
         $(header).append(header_title);
         $(header).append(navigation_wrp);
+
+        const languageSelector = $('<select class="lang" id="lang-selector">' + 
+            '<option value="en">en</option>' + 
+            '<option value="sv">sv</option>' + 
+            '</select>')
+
+        languageSelector.find("option").each((inx, val) => {
+            if ($(val).attr("value") === window.lang.getCurrentLanguage()) {
+                $(val).attr("selected", "selected")
+            }
+        })
+
+        languageSelector.change(() => {
+                $("#lang-selector option:selected").each((idx, opt)=> {
+                    window.lang.changeCurrentLanguage($(opt).val())
+                    window.lang.generateStrings($("#root"))
+                } )
+            });
+        $(header).append(languageSelector);
+        window.lang.generateStrings(header);
         return header;
     };
 

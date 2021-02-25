@@ -14,11 +14,15 @@ export default class Content {
         $(content).append(this.createTitle());
         $(content).append(this.createForm());
         $(content).append(this.createSendButton())
+        window.lang.generateStrings(content);
         return content;
     }
 
     createSendButton = () => {
-        var content = $('<div id="send-button" class="button-on-light bordered"> Send </div>').on("click",() => {
+        var content = $('<div id="send-button" class="button-on-light bordered" >'+
+                    '<span data-textid="send-sec-msg"></span>'+ 
+                '</div>')
+            .on("click",() => {
             let textmessage = $('#securityText').val()
             if (textmessage) {
                 window.SecurityData.addItem( { time: new Date(Date.now()), msg: textmessage }, (item) => {
@@ -35,7 +39,7 @@ export default class Content {
     createTitle = () => {
         var content = $(
             '<div class="heading light">' +
-                '<p>Report security issue</p>  '+
+                '<p><span data-textid="sec-title"></span></p>  '+
             '</div>')
         return content
     }
@@ -50,12 +54,15 @@ export default class Content {
 
     appendSuccessMessage = () => {
         $('#message').remove()
-        $('<div id="message" class="subtitle info success">success</div>').insertAfter('#send-button').fadeOut(800)
-
+        const content = $('<div id="message" class="subtitle info success"><span data-textid="sec-success-msg"></span></div>')
+        window.lang.generateStrings(content);
+        content.insertAfter('#send-button').fadeOut(800)
     }
 
     appendFailMessage = () => {
         $('#message').remove()
-        $('<div id="message" class="subtitle info error">Please insert your grievance</div>').insertAfter('#send-button').fadeOut(800)
+        const div = $('<div id="message" class="subtitle info error"><span data-textid="sec-error-msg"></span</div>')
+        window.lang.generateStrings(div)
+        div.insertAfter('#send-button').fadeOut(800)
     }
 }
