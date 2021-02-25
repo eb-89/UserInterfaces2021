@@ -15,24 +15,13 @@ export default class Database {
         this.DB2 = DB2;
     }
 
-    allUserNamesPasswords() {
+    allUserNames() {
         var nameCollect = [];
-        
-        for (let i = 0; i < this.DB.users.length; i++) {
-            var user = {username: this.DB.users[i].username, password: this.DB.users[i].password};
-            nameCollect.push(user);  
-        }
-        return nameCollect;
-    }
-
-    /*allUserNames() {
-        var nameCollect = [];
-        
         for (let i = 0; i < this.DB.users.length; i++) {
             nameCollect.push(this.DB.users[i].username);
         }
         return nameCollect;
-    }*/
+    }
 
     // =====================================================================================================
     // This is an example of a file that will return an array with some specific details about a
