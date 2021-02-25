@@ -1,37 +1,154 @@
 /*
 
-HEADER
+HEADER CONTAINER
 
 */
 
-.header {
-    width: 100%;
+.header-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 70px;
-  }
-  
-  .header > .header-button {
-    height: 48px;
-    font-size: 16px;
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-left: 8px;
-    margin-right: 8px;
+    height: 20%;
+    position: relative;
+}
+
+/*
+
+HEADER TITLE
+
+*/
+
+#header-title-wrp {
+    display: block;
+    flex-direction: column;
+    margin: auto;
+}
+
+.header-icon {
+    background: url("../img/logo.png") no-repeat;
+    min-width: 100%;
+    background-position: center;
+    background-size: contain;
+    height: 40px;
+}
+
+.header-title {
+    font-size: 50px;
+    color: #f1e9cd;
+    -webkit-text-stroke-width: 0.6px;
+    -webkit-text-stroke-color: #341001;
+}
+
+/*
+
+MENU
+
+*/
+
+#nav-icon-wrp {
+    display: block;
+    position: relative;
     user-select: none;
+    z-index: 1;
+    top: 0;
+    right: 10%;
+}
+
+#nav-icon-wrp input {
+    display: block;
+    width: 39px;
+    height: 33px;
+    position: absolute;
+    top: -3px;
+    left: -2px;
+    margin: 0;
+
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-  }
-  
-  .header > .header-button:hover {
-    color: #B2DFDB;
-  }
-  
-  
-  .header > .header-button.active {
-    color: #00695C;
-  }
+
+    opacity: 0;
+    z-index: 2; /* Place it above the hamburger-icon */
+}
+
+/* Creates the hamburger menu */
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #f1e9cd;
+    margin-bottom: 6px;
+    z-index: 1;
+    position: relative;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        opacity 0.55s ease;
+}
+
+/* First bar should rotate and change color */
+#nav-icon-wrp input:checked ~ .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+    background-color: #341001;
+}
+
+/* Make the second bar invisible */
+#nav-icon-wrp input:checked ~ .bar2 {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/* Third bar should rotate and change color */
+#nav-icon-wrp input:checked ~ .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background-color: #341001;
+}
+
+/* Make the menu slide in from the right */
+#nav-icon-wrp input:checked ~ ul {
+    transform: none;
+}
+
+/*  */
+#menu {
+    position: absolute;
+    width: 400px;
+    margin: -115px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+
+    background: #f1e9cd;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+
+    transform-origin: 0% 0%;
+    transform: translate(100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu > .menu-button {
+    padding: 10px 0;
+    font-size: 22px;
+    color: #341001;
+    position: relative;
+    cursor: pointer;
+}
+
+#menu > .menu-button::after {
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #341001;
+    transition: all 0.3s ease-in-out 0s;
+    width: 0;
+}
+
+#menu > .menu-button:hover::after {
+    width: 100px;
+    left: 0;
+}
