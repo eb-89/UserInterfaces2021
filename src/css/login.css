@@ -90,15 +90,3 @@
   font-size:1.3rem;
   border: #F1E9CD 1px solid;
 }
-
-@media screen and (min-width: 1600px) {
-  html, body {
-    font-size:140%;
-  }
-}
-
-@media screen and (min-width: 2400px) {
-  html, body {
-    font-size:180%;
-  }
-}
