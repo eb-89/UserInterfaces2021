@@ -17,6 +17,8 @@ import { DB2 } from "./db/Beverages.js";
 import SecurityData from "./db/SecurityData.js";
 import Database from "./db/database.js";
 
+import Lang from "./lang/lang.js";
+
 window.Database = null;
 
 export default class App {
@@ -48,6 +50,11 @@ export default class App {
          * Security Data
          */
         window.SecurityData = new SecurityData();
+
+        /**
+         * Language object
+         */
+        window.lang = new Lang();
     }
 
     init = () => {
