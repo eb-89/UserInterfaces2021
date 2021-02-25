@@ -79,39 +79,39 @@ export default class Header {
     createNavigationObjects = () => {
         let menu_wrp = $('<ul id="menu"></ul>');
 
-        let mainButton = $('<li class="menu-button">Produkter</li>');
+        let mainButton = $('<li class="menu-button"><span data-textid="nav-products"></span></li>');
         $(mainButton).on("click", () => {
             history.pushState("Main", "/");
         });
-        let aboutUsButton = $('<li class="menu-button">Om oss</li>');
+        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-aboutus"></span></li>');
         $(aboutUsButton).on("click", () => {
             history.pushState("About us", "/om-oss");
         });
-        let logInButton = $('<li class="menu-button">Log in</li>');
+        let logInButton = $('<li class="menu-button"><span data-textid="nav-login"></span></li>');
         $(logInButton).on("click", () => {
             history.pushState("Log in", "/log-in");
         });
-        let securityButton = $('<li class="menu-button">Security</li>');
+        let securityButton = $('<li class="menu-button"><span data-textid="nav-security"></span></li>');
         $(securityButton).on("click", () => {
             history.pushState("Security", "/security");
         });
-        let securityAdminButton = $('<li class="menu-button">Security Admin</li>');
+        let securityAdminButton = $('<li class="menu-button"><span data-textid="nav-securityAdmin"></span></li>');
         $(securityAdminButton).on("click", () => {
             history.pushState("SecurityAdmin", "/securityAdmin");
         });
-        let ordersButton = $('<li class="menu-button">Orders</li>');
+        let ordersButton = $('<li class="menu-button"><span data-textid="nav-orders"></span></li>');
         $(ordersButton).on("click", () => {
             history.pushState("Orders", "/orders");
         });
-        let productsButton = $('<li class="menu-button">Products</li>');
+        let productsButton = $('<li class="menu-button"><span data-textid="nav-products"></span></li>');
         $(productsButton).on("click", () => {
             history.pushState("Products", "/products");
         });
-        let menuVipButton = $('<li class="menu-button">Menu VIP</li>');
+        let menuVipButton = $('<li class="menu-button"><span data-textid="nav-vip"></span></li>');
         $(menuVipButton).on("click", () => {
             history.pushState("MenuVip", "/menu-vip");
         });
-        let menuStaffButton = $('<li class="menu-button">Menu Staff</li>');
+        let menuStaffButton = $('<li class="menu-button"><span data-textid="nav-staff"></span></li>');
         $(menuStaffButton).on("click", () => {
             history.pushState("MenuStaff", "/menu-staff");
         });

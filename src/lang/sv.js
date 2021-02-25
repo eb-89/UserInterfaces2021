@@ -1,17 +1,16 @@
 export const sv = {
   "send-sec-msg": "Skicka",
   "sec-success-msg": "Lyckat",
-  "sec-error-msg": "Var god ange till klagomål",
+  "sec-error-msg": "Var god ange ditt klagomål",
   "sec-title": "Anmäl säkerhetsproblem",
 
-
-  "header-products": "Produkter",
-  "header-aboutus": "Om oss",
-  "header-aboutus": "Log in",
-  "header-security": "Säkerhet",
-  "header-securityAdmin": "Säkerhet Admin",
-  "header-orders": "Order",
-  "header-products": "Produkter",
-  "header-vip": "Meny VIP",
-  "header-staff": "Meny Personal"
+  "nav-products": "Produkter",
+  "nav-aboutus": "Om oss",
+  "nav-login": "Logga in",
+  "nav-security": "Säkerhet",
+  "nav-securityAdmin": "Säkerhet Admin",
+  "nav-orders": "Order",
+  "nav-products": "Produkter",
+  "nav-vip": "Meny VIP",
+  "nav-staff": "Meny Personal"
 }
