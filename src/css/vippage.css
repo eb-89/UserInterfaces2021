@@ -1,105 +1,23 @@
 .vip-page-container{
     /*background-color: #341001;*/
     /*position: relative;*/
-    /*!*width: 80%;*!*/
-    /*width: 275px;*/
-    /*height: 340px;*/
-}
-
-.vip-page-container:before{
-    /*content: "";*/
-    /*background: #f1e9cd;*/
-    /*display: block;*/
-    /*position: absolute;*/
-    /*width: 271px;*/
-    /*height: 336px;*/
-    /*top: 2px;*/
-    /*left: 2px;*/
-}
-
-/*
-.card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 275px;
-    height: 340px;
-    background-color: #341001;
-    position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
-}
-
-.card:before {
-    content: "";
-    width: 271px;
-    height: 336px;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    width: 50%;
     background: #f1e9cd;
-    display: block;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-}
-*/
-
-.item{
-    width: 275px;
-    height: 60px;
-    background-color: #341001;
-    position: relative;
+    padding: 20px;
 }
 
-.item:before{
-    content: "";
-    width: 271px;
-    height: 56px;
+.item-inner {
     background: #f1e9cd;
-    display: block;
     position: absolute;
-    top: 2px;
-    left: 2px;
 }
-
-/*.inner-item {*/
-/*    width: 255px;*/
-/*    height: 50px;*/
-/*    background: #341001;*/
-/*    position: relative;*/
-/*}*/
-
-/*.inner-item:before {*/
-/*    content: "";*/
-/*    background: #f1e9cd;*/
-/*    display: block;*/
-/*    position: absolute;*/
-/*    width: 249px;*/
-/*    height: 44px;*/
-/*    top: 4px;*/
-/*    left: 4px;*/
-/*}*/
-
-/*.item-inner {*/
-/*    width: 100%;*/
-/*    !*height: 200px;*!*/
-/*    background: #f1e9cd;*/
-/*    margin: auto;*/
-/*    padding: 10px;*/
-/*}*/
 
 .item-name {
-    width: 70%;
-    /*height: 200px;*/
-    /*background: #f1e9cd;*/
-    /*max-width: 100%;*/
-    display: flex;
-    text-align: center;
-    position: relative;
+    width: 80%;
     float: left;
 }
 
 .item-desc {
-    margin-left: 70%;
-    position: relative;
-/*    !*height: 200px;*!*/
-/*    background: #f1e9cd;*/
+    float: left;
+    width: 20%;
+    text-align: center;
 }
