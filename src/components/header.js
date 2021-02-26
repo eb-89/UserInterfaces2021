@@ -1,3 +1,6 @@
+
+import LanguageSelector from './languageSelector.js'
+
 /**
  * Class for the header. This file is rendered on each view which uses a header
  */
@@ -17,24 +20,9 @@ export default class Header {
         $(header).append(header_title);
         $(header).append(navigation_wrp);
 
-        const languageSelector = $('<select class="lang" id="lang-selector">' + 
-            '<option value="en">en</option>' + 
-            '<option value="sv">sv</option>' + 
-            '</select>')
+        let languageSelector = new LanguageSelector()
 
-        languageSelector.find("option").each((inx, val) => {
-            if ($(val).attr("value") === window.lang.getCurrentLanguage()) {
-                $(val).attr("selected", "selected")
-            }
-        })
-
-        languageSelector.change(() => {
-                $("#lang-selector option:selected").each((idx, opt)=> {
-                    window.lang.changeCurrentLanguage($(opt).val())
-                    window.lang.generateStrings($("#root"))
-                } )
-            });
-        $(header).prepend(languageSelector);
+        $(header).prepend(languageSelector.createSelector())
         window.lang.generateStrings(header);
         return header;
     };
