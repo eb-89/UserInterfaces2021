@@ -12,5 +12,8 @@ export const en = {
   "nav-orders": "Orders",
   "nav-products": "Products",
   "nav-vip": "Menu VIP",
-  "nav-staff": "Menu Staff"
+  "nav-staff": "Menu Staff",
+
+  "lang-sv": "Swedish",
+  "lang-en": "English"
 }
