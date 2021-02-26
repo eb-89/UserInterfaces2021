@@ -170,6 +170,7 @@ MENU
   padding: 8px;
   border-radius: 2px; 
   user-select: none;
+  cursor: pointer;
 }
 
 #lang-menu .lang-tile.lang-option {
@@ -179,7 +180,6 @@ MENU
 #lang-menu .lang-tile.lang-option:hover {
     background-color: #341001;
     color: white;
-    cursor: pointer;
 }
 
 
