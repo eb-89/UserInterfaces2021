@@ -4,7 +4,7 @@
 
 .security-form-container {
   width: 40%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .heading.light {
@@ -61,7 +61,10 @@
     box-shadow:
     0 0 0 1px #341001,
     0 0 0 5px #f1e9cd,
-    0 0 0 6px #341001;
+    0 0 0 6px #341001,
+    0 0 0 18px #f1e9cd,
+    0 0 0 20px #341001;
+
   font-family: 'Old Standard TT';
   font-size: 14px;
   background-color: #f1e9cd;
@@ -87,11 +90,10 @@
 
 .security-item {
   position: relative;
-  border-radius: 10px;
+  border-radius: 2px;
   padding: 10px;
   background-color: #dad1b0;
   border: 1px #341001 solid;
-  margin: 5px 0; 
 }
 
 .security-item.selected {
@@ -127,7 +129,6 @@
   justify-content: center;
 }
 .security-flex-container > .area {
-  padding: 10px;
   margin: 0 10px;
   height: 400px; 
 
@@ -139,7 +140,8 @@
 }
 
 
-
 .area.show {
+  margin-left: 40px;
   width: 100%;
+  padding: 10px;
 }

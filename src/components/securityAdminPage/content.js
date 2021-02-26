@@ -5,6 +5,7 @@
 export default class Content {
     constructor() {
         this.secObject = window.SecurityData;
+        this.currentItem;
     }
 
     init = () => {
@@ -36,6 +37,7 @@ export default class Content {
 
                     $("[id^=sec-item-]").removeClass("selected")
                     $(`#sec-item-${item.id}`).addClass("selected")
+                    this.currentItem = item.id;
             })
 
             const header = $('<div class="security-item-header">'+ 
@@ -51,6 +53,9 @@ export default class Content {
             const removeBtn = $('<div class="button-remove">X</div>').on('click', () => {
                 this.secObject = window.SecurityData.removeItem(item);
                 $(`#sec-item-${item.id}`).remove();
+                if (this.currentItem === item.id) {
+                    $("#sec-content").empty()
+                }
             })
 
             $(header).append(removeBtn)
@@ -58,8 +63,6 @@ export default class Content {
             $(listItem).append(preview)
             $(content).append(listItem)
         }
-
-
 
         return content;
     }
