@@ -2,17 +2,23 @@
  * This page will create all the content of the Menu VIP-page (views/menuvip.js)
  */
 
+import Product from "../mainPage/content.js";
+
 export default class Content {
     constructor() {
     }
 
     init = () => {
         this.user = window.Database.DB.users[0] // TODO update the user id
+        this.product = new Product();
+        this.product.init();
     }
 
     render = () => {
         var content = $('<div class="content-container"></div>');
         $(content).append(this.createInformationBox());
+        $(content).append(this.product.createFilteringOptions());
+        $(content).append(this.product.createProductMenu());
         return content;
     }
 
