@@ -226,14 +226,13 @@ export default class Content {
         $(desc_expanded).append(type);
         $(desc_expanded).append(serving_type);
 
-        // Creating an anonymous function surrounding the onClick event, it didn't find $('.clickable') without it. 
-        // Probably because without it, it was binding the click-event to the button before the button existed.
+        // Function for opening "More Info"
         $(desc_open_btn).on('click', function() {
             let card = $(this).closest('.product-card');
             let elem = $(this).closest('.product-card').find('.product-desc-expand');
             let anim_speed = 300;
             if($(elem).hasClass('expanded')){
-                $(elem).removeClass('expanded')
+                $(elem).removeClass('expanded');
                 $(elem).animate({height: 0}, anim_speed);
             }
             else {

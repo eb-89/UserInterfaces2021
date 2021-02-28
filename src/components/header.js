@@ -1,3 +1,6 @@
+
+import LanguageSelector from './languageSelector.js'
+
 /**
  * Class for the header. This file is rendered on each view which uses a header
  */
@@ -10,41 +13,98 @@ export default class Header {
 
     // Renders all header
     render = () => {
-        var header = $('<div class="header"></div>');
-        var mainButton = $('<div class="header-button">Produkter</div>');
+        let header = $('<div class="header-container"></div>');
+        let header_title = this.createHeaderTitle();
+        let navigation_wrp = this.createNavigation();
+
+        $(header).append(header_title);
+        $(header).append(navigation_wrp);
+
+        let languageSelector = new LanguageSelector()
+
+        $(header).prepend(languageSelector.createSelector())
+        window.lang.generateStrings(header);
+        return header;
+    };
+
+    createHeaderTitle = () => {
+        let title_wrp = $('<div id="header-title-wrp"></div>');
+
+        let title = $('<div class="header-title noselect">The Flying Dutchman</div>');
+        let logo = $('<div class="header-icon"></div>');
+
+        $(title_wrp).append(logo);
+        $(title_wrp).append(title);
+
+        return title_wrp;
+    };
+
+    /**
+     * Creates the hamburger-menu icon
+     */
+    createNavigation = () => {
+        // Checks if the checkbox is checked when toggling menu
+        let nav_icon = $(
+            '<div id="nav-icon-wrp">' +
+                '<input type="checkbox" />' +
+                '<div class="bar1"></div>' +
+                '<div class="bar2"></div>' +
+                '<div class="bar3"></div>' +
+            '</div>'
+        );
+
+        let menu_objects = this.createNavigationObjects();
+
+        $(nav_icon).append(menu_objects);
+        return nav_icon;
+    };
+
+    /**
+     * Creates the list of menu objects.
+     * It is only called from this.createNavigation()
+     * @returns (elem) Menu wrapper that holds all objects
+     */
+    createNavigationObjects = () => {
+        let menu_wrp = $('<ul id="menu"></ul>');
+
+        let mainButton = $('<li class="menu-button"><span data-textid="nav-products"></span></li>');
         $(mainButton).on("click", () => {
             history.pushState("Main", "/");
         });
-        var aboutUsButton = $('<div class="header-button">Om oss</div>');
+        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-aboutus"></span></li>');
         $(aboutUsButton).on("click", () => {
             history.pushState("About us", "/om-oss");
         });
-        var logInButton = $('<div class="header-button">Log in</div>');
+        let logInButton = $('<li class="menu-button"><span data-textid="nav-login"></span></li>');
         $(logInButton).on("click", () => {
             history.pushState("Log in", "/log-in");
         });
-        var securityButton = $('<div class="header-button">Security</div>');
+        let securityButton = $('<li class="menu-button"><span data-textid="nav-security"></span></li>');
         $(securityButton).on("click", () => {
             history.pushState("Security", "/security");
         });
-        var ordersButton = $('<div class="header-button">Orders</div>');
+        let securityAdminButton = $('<li class="menu-button"><span data-textid="nav-securityAdmin"></span></li>');
+        $(securityAdminButton).on("click", () => {
+            history.pushState("SecurityAdmin", "/securityAdmin");
+        });
+        let ordersButton = $('<li class="menu-button"><span data-textid="nav-orders"></span></li>');
         $(ordersButton).on("click", () => {
             history.pushState("Orders", "/orders");
         });
-        var productsButton = $('<div class="header-button">Products</div>');
+        let productsButton = $('<li class="menu-button"><span data-textid="nav-products"></span></li>');
         $(productsButton).on("click", () => {
             history.pushState("Products", "/products");
         });
-        var menuVipButton = $('<div class="header-button">Menu VIP</div>');
+        let menuVipButton = $('<li class="menu-button"><span data-textid="nav-vip"></span></li>');
         $(menuVipButton).on("click", () => {
             history.pushState("MenuVip", "/menu-vip");
         });
-        var menuStaffButton = $('<div class="header-button">Menu Staff</div>');
+        let menuStaffButton = $('<li class="menu-button"><span data-textid="nav-staff"></span></li>');
         $(menuStaffButton).on("click", () => {
             history.pushState("MenuStaff", "/menu-staff");
         });
 
-        // Decides which button in the header that is active at a give time
+        // Decides which button in the header that is active at a given time
         switch (this.activePage) {
             case "main": {
                 $(mainButton).addClass("active");
@@ -60,6 +120,10 @@ export default class Header {
             }
             case "security": {
                 $(securityButton).addClass("active");
+                break;
+            }
+            case "securityAdmin": {
+                $(securityAdminButton).addClass("active");
                 break;
             }
             case "orders": {
@@ -79,14 +143,17 @@ export default class Header {
                 break;
             }
         }
-        $(header).append(mainButton);
-        $(header).append(aboutUsButton);
-        $(header).append(logInButton);
-        $(header).append(securityButton);
-        $(header).append(ordersButton);
-        $(header).append(productsButton);
-        $(header).append(menuVipButton);
-        $(header).append(menuStaffButton);
-        return header;
+
+        $(menu_wrp).append(mainButton);
+        $(menu_wrp).append(aboutUsButton);
+        $(menu_wrp).append(logInButton);
+        $(menu_wrp).append(securityButton);
+        $(menu_wrp).append(securityAdminButton);
+        $(menu_wrp).append(ordersButton);
+        $(menu_wrp).append(productsButton);
+        $(menu_wrp).append(menuVipButton);
+        $(menu_wrp).append(menuStaffButton);
+
+        return menu_wrp;
     };
 }
