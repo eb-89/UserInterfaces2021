@@ -17,6 +17,7 @@ export default class Content {
         let content = $('<div class="content-container"></div>');
         $(content).append(this.createFilteringOptions());
         $(content).append(this.createProductMenu());
+        window.lang.generateStrings(content);
         return content;
     }
 
@@ -202,22 +203,22 @@ export default class Content {
         $(desc_expanded).append(desc_expanded_header_wrp);
 
         let abv = $('<div class="product-text-wrp">'+
-                        '<div class="subtitle bold" title="Pris inklusive moms">Alkoholhalt:</div>'+
+                        '<div class="subtitle bold"><span data-textid="prod-strength"></span>:</div>'+
                         '<div class="subtitle bold"> ' + response.alkoholhalt + '</div>'+
                     '</div>');
         
         let country = $('<div class="product-text-wrp">'+
-                            '<div class="subtitle bold">Land:</div>'+
+                            '<div class="subtitle bold"><span data-textid="prod-country"></span>:</div>'+
                             '<div class="subtitle bold">' + response.land + '</div>'+
                         '</div>');
         
         let type = $('<div class="product-text-wrp">'+
-                        '<div class="subtitle bold">Typ:</div>'+
+                        '<div class="subtitle bold"><span data-textid="prod-type"></span>:</div>'+
                         '<div class="subtitle bold"> ' + response.varugrupp + '</div>'+
                      '</div>');
         
         let serving_type = $('<div class="product-text-wrp">'+
-                                '<div class="subtitle bold">Servering i:</div>'+
+                                '<div class="subtitle bold"><span data-textid="prod-serving"></span>:</div>'+
                                 '<div class="subtitle bold"> ' + response.forpackning + '</div>'+
                             '</div>');
 

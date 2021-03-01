@@ -14,6 +14,11 @@ export const en = {
   "nav-vip": "Menu VIP",
   "nav-staff": "Menu Staff",
 
+  "prod-strength": "Alc. Volume",
+  "prod-country": "Country",
+  "prod-type": "Type",
+  "prod-serving": "Serving Size",
+
   "lang-sv": "Swedish",
   "lang-en": "English"
 }
