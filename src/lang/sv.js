@@ -14,6 +14,11 @@ export const sv = {
   "nav-vip": "Meny VIP",
   "nav-staff": "Meny Personal",
 
+  "prod-strength": "Alkoholhalt",
+  "prod-country": "Land",
+  "prod-type": "Typ",
+  "prod-serving": "Servering i",
+
   "lang-sv": "Svenska",
   "lang-en": "Engelska"
 }
