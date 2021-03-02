@@ -18,6 +18,14 @@ export const en = {
   "prod-country": "Country",
   "prod-type": "Type",
   "prod-serving": "Serving Size",
+  "prod-info": "Information",
+
+  "login-title": "Sign in",
+  "login-username": "Username",
+  "login-password": "Password",
+  "login-errormsgusername": "The username you entered is incorrect",
+  "login-errormsgpassword": "The password you entered is incorrect",
+  "login-loginbtn": "Sign in",
 
   "lang-sv": "Swedish",
   "lang-en": "English"

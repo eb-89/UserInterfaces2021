@@ -18,6 +18,14 @@ export const sv = {
   "prod-country": "Land",
   "prod-type": "Typ",
   "prod-serving": "Servering i",
+  "prod-info": "Information",
+
+  "login-title": "Logga in",
+  "login-username": "Användarnamn",
+  "login-password": "Lösenord",
+  "login-errormsgusername": "Användarnamnet du har angett är felaktigt",
+  "login-errormsgpassword": "Lösenordet du har angett är felaktigt",
+  "login-loginbtn": "Logga in",
 
   "lang-sv": "Svenska",
   "lang-en": "Engelska"

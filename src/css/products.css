@@ -1,6 +1,6 @@
 /*
 
-MAIN/PRODUCT PAGE
+MAIN/PRODUCT PAGE (Used by mainPage/content.js)
 
 */
 
@@ -79,13 +79,6 @@ Contains: Title and price
     text-align: center;
     height: 30%;
     width: 100%;
-}
-
-.product-line {
-    border-bottom: 3px solid #341001;
-    position: absolute;
-    width: 50%;
-    left: 25%;
 }
 
 .product-title {

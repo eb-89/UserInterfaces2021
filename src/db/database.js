@@ -25,22 +25,13 @@ export default class Database {
         return nameCollect;
     }
 
-    /*allUserNames() {
-        var nameCollect = [];
-        
-        for (let i = 0; i < this.DB.users.length; i++) {
-            nameCollect.push(this.DB.users[i].username);
-        }
-        return nameCollect;
-    }*/
-
     // =====================================================================================================
     // This is an example of a file that will return an array with some specific details about a
     // selected user name (not the first name/alst name). It will also add details from another "database"
     // which contains the current account status for the person.
     //
     userDetails(userName) {
-        var userCollect = [];
+        var userCollect = {};
         var userID;
         var userIndex;
         var account;
@@ -66,17 +57,24 @@ export default class Database {
 
         // This is the way to add the details you want from the db into your own data structure.
         // If you want to change the details, then just add or remove items accordingly below.
-        userCollect.push(
-            this.DB.users[userIndex].user_id,
-            this.DB.users[userIndex].username,
-            this.DB.users[userIndex].first_name,
-            this.DB.users[userIndex].last_name,
-            this.DB.users[userIndex].email,
-
-            account
-        );
+        userCollect = this.__userDetails(this.DB.users[userIndex].user_id, this.DB.users[userIndex].credentials, this.DB.users[userIndex].username,
+                this.DB.users[userIndex].first_name, this.DB.users[userIndex].last_name, this.DB.users[userIndex].email, account);
 
         return userCollect;
+    }
+
+    __userDetails(user_id, credentials, username, first_name, last_name, email, balance) {
+        let collectorJSON = {
+                            "userID": user_id, 
+                            "credentials": credentials, 
+                            "username": username, 
+                            "firstName": first_name, 
+                            "lastName": last_name,
+                            "email": email,
+                            "balance": balance
+                            };
+        return collectorJSON;
+
     }
 
     // =====================================================================================================
@@ -133,7 +131,7 @@ export default class Database {
 
         for (let i = 0; i < this.DB2.spirits.length; i++) {
             collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
-                this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning))
+                this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning));
         }
 
         // The DB is stored in the variable DB2, with "spirits" as key element. If you need to select only certain

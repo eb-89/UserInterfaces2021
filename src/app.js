@@ -2,20 +2,21 @@
  * This is the first javascript file that runs when entering the website, it controlls the flow
  */
 
-import Router from "./views/router.js";
+import Router from "./views/router.js"; // Handles switching between pages
 import MainPage from "./views/main.js"; // MainPage is the Product page since it's the home page.
-import AboutUsPage from "./views/aboutus.js";
-import LogInPage from "./views/login.js";
-import SecurityPage from "./views/security.js";
-import SecurityAdminPage from "./views/securityAdmin.js";
-import OrdersPage from "./views/orders.js";
-import ProductsPage from "./views/products.js";
-import MenuVipPage from "./views/menuvip.js";
-import MenuStaffPage from "./views/menustaff.js";
-import { DB } from "./db/DBLoaded.js"; // the import {DB}/{DB2} is a new way of importing (constants) from ES6 which is the latest JavaScript
-import { DB2 } from "./db/Beverages.js";
-import SecurityData from "./db/SecurityData.js";
-import Database from "./db/database.js";
+import AboutUsPage from "./views/aboutus.js"; // Help-page, place where you can learn how to use the system
+import LogInPage from "./views/login.js"; // The page where you login
+import SecurityPage from "./views/security.js"; // Report a security issue
+import SecurityAdminPage from "./views/securityAdmin.js"; // See the reported security issues
+import OrdersPage from "./views/orders.js"; // See and manage current orders
+import ProductsPage from "./views/products.js"; // The manager can manage the products (order refill, revise stock, add/remove products etc)
+import MenuVipPage from "./views/menuvip.js"; // The product page for the VIP customers (ability to order/pay from table)
+import MenuStaffPage from "./views/menustaff.js"; // Product page for staff and do smaller management (remove product temporarily, see availability of product, modify price of product)
+
+import { DB } from "./db/DBLoaded.js"; // database containing user data
+import { DB2 } from "./db/Beverages.js"; // database containing beverages
+import SecurityData from "./db/SecurityData.js"; // database containing reported security issues
+import Database from "./db/database.js"; // database functions
 
 import Lang from "./lang/lang.js";
 
