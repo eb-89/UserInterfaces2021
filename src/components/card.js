@@ -4,10 +4,10 @@
 export default class Card {
     constructor() {
         this.isVip = false;
-        this.isStaff = true;
+        this.isStaff = false;
         if(localStorage.getItem('loggedInUser') != ''){
-            this.isVip = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 3;
-            this.isStaff = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 0;
+            this.isVip = JSON.parse(localStorage.getItem('loggedInUser')) == 3;
+            this.isStaff = JSON.parse(localStorage.getItem('loggedInUser')) == 0;
         }
     }
 
@@ -176,6 +176,9 @@ export default class Card {
         );
         $(desc_expanded).append(serving_type);
 
+        /**
+         * Checks if the user is logged in as staff
+         */
         if(this.isStaff){
             let stock_amount = $(
                 '<div class="product-text-wrp">' +
@@ -186,6 +189,9 @@ export default class Card {
 
             let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
 
+            /**
+             * "Disables" a card by giving it some opacity, should mark that the product is no either visible or disabled for the customers
+             */
             let remove_btn = $('<div class="button-mar button-on-light"><span data-textid="prod-disable"></span></div>');
             $(btn_wrp).append(remove_btn);
 
@@ -202,7 +208,9 @@ export default class Card {
                 window.lang.generateStrings(elem);
             });
 
-
+            /**
+             * Changes the stock value that is visible, all is set to an arbitrary 10 from the beginning.
+             */
             let change_stk = $('<div class="button-mar button-on-light"><span data-textid="prod-change_stk"></span></div>')
             $(btn_wrp).append(change_stk);
 
@@ -222,33 +230,11 @@ export default class Card {
             $(desc_expanded).append(btn_wrp);
         }
 
+        /**
+         * Checks if the user is logged in as staff
+         */
         if(this.isVip){
 
         }
     }
-
-    /**
-     * Create STAFF functionality
-     */
-    createStaffCard = () => {
-        let options_btn = $('<div class="options-button button-on-light"></div>');
-
-        $(options_btn).on('click', function(){
-            if($(options_btn).hasClass('active')){
-                $(options_btn).removeClass('active');
-                $(options_btn).removeClass('show-options');
-            }
-            else{
-                $(options_btn).addClass('active');
-                $(options_btn).addClass('show-options');
-            }
-        });
-
-        return options_btn;
-    };
-
-    /**
-     * Create VIP functionality
-     */
-    createVipCard = (elem) => {};
 }
