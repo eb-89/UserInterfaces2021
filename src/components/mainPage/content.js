@@ -7,10 +7,8 @@ import Card from "../card.js";
 export default class Content {
     constructor() {
         this.data = window.Database.allBeveragesMoreDetailed(); // Fetches the data from the JSON-obj. (Simulate how it would work in real world)
-        this.products_per_page = 12; // Amount of products per page
+        this.products_per_page = 16; // Amount of products per page
         this.pagination = new Pagination(this.data.length, this.products_per_page); // Send length of data (this.data.length) and amounts of products (this.products_per_page) that will be visible per page
-        this.isVip = false;
-        this.isStaff = false;
         this.card = new Card();
     }
 
@@ -44,7 +42,7 @@ export default class Content {
         let content = $('<div id="product-container"></div>');
         let pagination_settings = this.pagination.getSpan();
         for(let i = pagination_settings.from; i < pagination_settings.to; i++){
-            $(content).append(this.card.createProductCard(this.data[i], this.isVip, this.isStaff));
+            $(content).append(this.card.createProductCard(this.data[i]));
         }
         return content;
     }
@@ -77,7 +75,7 @@ export default class Content {
         }
 
         for(let i = from; i < to; i++){
-            $(elem).append(this.card.createProductCard(this.data[i], false, false));
+            $(elem).append(this.card.createProductCard(this.data[i]));
         }
     }
 }

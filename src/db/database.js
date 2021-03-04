@@ -130,7 +130,7 @@ export default class Database {
         let collector = []
 
         for (let i = 0; i < this.DB2.spirits.length; i++) {
-            collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
+            collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].artikelid, this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
                 this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning));
         }
 
@@ -139,8 +139,9 @@ export default class Database {
         return collector;
     }
     
-    __allBeveragesMoreDetailed(namn, pris, varugrupp, land, producent, alkoholhalt, forpackning) {
+    __allBeveragesMoreDetailed(id, namn, pris, varugrupp, land, producent, alkoholhalt, forpackning) {
         let collectorJSON = {
+                            "id": id,
                             "namn": namn, 
                             "pris": pris, 
                             "varugrupp": varugrupp, 

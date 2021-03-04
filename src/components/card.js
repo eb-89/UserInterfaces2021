@@ -2,7 +2,14 @@
  * Class defining the functions for the product cards
  */
 export default class Card {
-    constructor() {}
+    constructor() {
+        this.isVip = false;
+        this.isStaff = true;
+        if(localStorage.getItem('loggedInUser') != ''){
+            this.isVip = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 3;
+            this.isStaff = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 0;
+        }
+    }
 
     init = () => {};
 
@@ -13,7 +20,7 @@ export default class Card {
      * @param {isStaff} boolean
      * @returns An product card element
      */
-    createProductCard = (response, isVip, isStaff) => {
+    createProductCard = (response) => {
         // Big wrappers inside the card
         let card = $('<div class="product-card card"></div>');
         let inner_card = $('<div class="inner-card"></div>');
@@ -26,7 +33,7 @@ export default class Card {
         $(card_content_wrp).append(main_wrp);
 
         let button_wrp = $('<div class="main-btn-wrp"></div>');
-        let desc_open_btn = $('<div class="button-on-light">i</div>');
+        let desc_open_btn = $('<div class="expansion-button open"></div>');
         $(button_wrp).append(desc_open_btn);
 
         // Function for expanding "More Info"
@@ -39,6 +46,7 @@ export default class Card {
                 .find(".product-desc-expand");
             
             window.lang.generateStrings(card); // Generate the language strings
+
             let anim_speed = 300;
             $(elem).addClass("expanded");
             let currHeight = $(elem).height();
@@ -76,17 +84,26 @@ export default class Card {
         $(desc_wrp).append(name_wrp);
         $(desc_wrp).append(price);
 
-        // Expanded Description wrapper - Contains further information (activated by $(more_info_btn))
+        // Expanded Description wrapper - Contains further information (activated by $(desc_open_btn))
 
         let desc_expanded = $('<div class="product-desc-expand"></div>');
 
+        $(inner_card).append(this.createExpandedInfo(desc_expanded, response));
+
+        $(card).append(inner_card);
+
+        return card;
+    };
+    
+    /**
+     * Creates the more information element
+     * @param {element} desc_expanded 
+     * @returns The DOM element that contains information about the beverage
+     */
+    createExpandedInfo = (desc_expanded, response) => {
         let desc_expanded_header_wrp = $(
             '<div class="expanded-header-wrp"></div>'
         );
-
-        let close_btn_wrp = $('<div class="desc-btn-wrp"></div>');
-        let desc_close_btn = $('<div class="button-on-light">i</div>');
-        $(close_btn_wrp).append(desc_close_btn);
 
         let desc_name_wrp = $('<div class="desc-name-wrp"></div>');
         let desc_expanded_title = $(
@@ -94,6 +111,10 @@ export default class Card {
         );
         $(desc_name_wrp).append(desc_expanded_title);
 
+        let close_btn_wrp = $('<div class="desc-btn-wrp"></div>');
+
+        let desc_close_btn = $('<div class="expansion-button close"></div>');
+        $(close_btn_wrp).append(desc_close_btn);
         // Function for closing "More Info"
         $(desc_close_btn).on("click", function (event) {
             event.stopPropagation();
@@ -107,16 +128,29 @@ export default class Card {
         });
 
         $(desc_expanded_header_wrp).append(close_btn_wrp);
-        $(desc_expanded_header_wrp).append(desc_name_wrp);
 
+        $(desc_expanded_header_wrp).append(desc_name_wrp);
         $(desc_expanded).append(desc_expanded_header_wrp);
 
+        this.__createExpandedInfo(desc_expanded, response);
+
+        return desc_expanded;
+    }
+
+    /**
+     * Help function to this.createExpandedInfo(), creating the content in the expansion card
+     * @param {element} desc_expanded 
+     * @param {JSONObj} response
+     * @returns nothing
+     */
+    __createExpandedInfo = (desc_expanded, response) => {
         let abv = $(
             '<div class="product-text-wrp">' +
                 '<div class="subtitle bold"><span data-textid="prod-strength"></span>:</div>' +
                 '<div class="subtitle bold"> ' + response.alkoholhalt + '</div>' +
             '</div>'
         );
+        $(desc_expanded).append(abv);
 
         let country = $(
             '<div class="product-text-wrp">' +
@@ -124,6 +158,7 @@ export default class Card {
                 '<div class="subtitle bold">' + response.land + '</div>' +
             '</div>'
         );
+        $(desc_expanded).append(country);
 
         let type = $(
             '<div class="product-text-wrp">' +
@@ -131,6 +166,7 @@ export default class Card {
                 '<div class="subtitle bold"> ' + response.varugrupp + '</div>' +
             '</div>'
         );
+        $(desc_expanded).append(type);
 
         let serving_type = $(
             '<div class="product-text-wrp">' +
@@ -138,48 +174,81 @@ export default class Card {
                 '<div class="subtitle bold"> ' + response.forpackning + '</div>' +
             '</div>'
         );
-
-        // Append the information elements to the expansion element
-        $(desc_expanded).append(abv);
-        $(desc_expanded).append(country);
-        $(desc_expanded).append(type);
         $(desc_expanded).append(serving_type);
 
-        // Function for opening "More Info"
-        $(desc_open_btn).on("click", function () {
-            let card = $(this).closest(".product-card");
-            let elem = $(this)
-                .closest(".product-card")
-                .find(".product-desc-expand");
-            let anim_speed = 300;
-            if ($(elem).hasClass("expanded")) {
-                $(elem).removeClass("expanded");
-                $(elem).animate({ height: 0 }, anim_speed);
-            } else {
-                $(elem).addClass("expanded");
-                let currHeight = $(elem).height();
-                $(elem).css("height", "auto");
-                let autoHeight = $(card)
-                    .find(".product-main-wrp")
-                    .outerHeight(true);
-                $(elem)
-                    .height(currHeight)
-                    .animate({ height: autoHeight }, anim_speed);
+        if(this.isStaff){
+            let stock_amount = $(
+                '<div class="product-text-wrp">' +
+                    '<div class="subtitle bold"><span data-textid="prod-stock"></span>:</div>' +
+                    '<form id="' + response.id + '"><input type="text" name="stock_amount" class="stock-amount-input" value="10" disabled /></form>'+
+                '</div>'
+            );
+
+            let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
+
+            let remove_btn = $('<div class="button-mar button-on-light"><span data-textid="prod-disable"></span></div>');
+            $(btn_wrp).append(remove_btn);
+
+            $(remove_btn).on('click', function() {
+                let elem = $(this).closest(".product-card");
+                if($(elem).hasClass('disabled')){
+                    $(elem).removeClass('disabled');
+                    $(remove_btn).find('span').attr('data-textid', 'prod-disable');
+                }
+                else{
+                    $(elem).addClass('disabled');
+                    $(remove_btn).find('span').attr('data-textid', 'prod-enable');
+                }
+                window.lang.generateStrings(elem);
+            });
+
+
+            let change_stk = $('<div class="button-mar button-on-light"><span data-textid="prod-change_stk"></span></div>')
+            $(btn_wrp).append(change_stk);
+
+            $(change_stk).on('click', function() {
+                if($(stock_amount).find("#" + response.id).find('input').prop('disabled')){
+                    $(stock_amount).find("#" + response.id).find('input').prop('disabled', false);
+                    $(change_stk).find('span').attr('data-textid', 'prod-change_stk-conf');
+                }
+                else{
+                    $(stock_amount).find("#" + response.id).find('input').prop('disabled', true);
+                    $(change_stk).find('span').attr('data-textid', 'prod-change_stk');
+                }
+                window.lang.generateStrings(change_stk);
+            });
+
+            $(desc_expanded).append(stock_amount);
+            $(desc_expanded).append(btn_wrp);
+        }
+
+        if(this.isVip){
+
+        }
+    }
+
+    /**
+     * Create STAFF functionality
+     */
+    createStaffCard = () => {
+        let options_btn = $('<div class="options-button button-on-light"></div>');
+
+        $(options_btn).on('click', function(){
+            if($(options_btn).hasClass('active')){
+                $(options_btn).removeClass('active');
+                $(options_btn).removeClass('show-options');
+            }
+            else{
+                $(options_btn).addClass('active');
+                $(options_btn).addClass('show-options');
             }
         });
-        $(inner_card).append(desc_expanded);
-        $(card).append(inner_card);
 
-        return card;
+        return options_btn;
     };
 
     /**
-     * Creates a button that adds a product to a shopping list
+     * Create VIP functionality
      */
-    createAddButton = () => {};
-
-    /**
-     * Creates a button that removes an item from the menu temporarily (Disable the button)
-     */
-    createRemoveButton = () => {};
+    createVipCard = (elem) => {};
 }

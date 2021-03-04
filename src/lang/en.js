@@ -19,6 +19,11 @@ export const en = {
   "prod-type": "Type",
   "prod-serving": "Serving Size",
   "prod-info": "Information",
+  "prod-stock": "Stock Amount",
+  "prod-disable": "Remove Item",
+  "prod-enable": "Add Item",
+  "prod-change_stk": "Edit Stock Amount",
+  "prod-change_stk-conf": "Confirm Stock Change",
 
   "login-title": "Sign in",
   "login-username": "Username",
