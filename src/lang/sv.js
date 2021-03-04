@@ -5,7 +5,7 @@ export const sv = {
   "sec-title": "Anmäl säkerhetsproblem",
 
   "nav-products": "Produkter",
-  "nav-aboutus": "Om oss",
+  "nav-help": "Hjälp",
   "nav-login": "Logga in",
   "nav-security": "Säkerhet",
   "nav-securityAdmin": "Säkerhet Admin",
@@ -32,6 +32,12 @@ export const sv = {
   "login-errormsgpassword": "Lösenordet du har angett är felaktigt",
   "login-loginbtn": "Logga in",
 
+  "help-title": "Hjälp",
+
   "lang-sv": "Svenska",
-  "lang-en": "Engelska"
+  "lang-en": "Engelska",
+
+  "help-order-string" : "För att beställa en öl, klicka på ölen.",
+  "help-security-string": "Du kan rapportera säkerhetsproblem under \"Säkerhetsproblem\". ",
+  "help-staff-string" : "Du kan ombeställa genom att klicka \"ombeställ\" under \"order\". ",
 }
