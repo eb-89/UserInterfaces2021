@@ -5,7 +5,7 @@ export const en = {
   "sec-title": "Report Security Issue",
 
   "nav-products": "Products",
-  "nav-aboutus": "About us",
+  "nav-help": "Help",
   "nav-login": "Log in",
   "nav-security": "Security",
   "nav-securityAdmin": "SecurityAdmin",
@@ -32,6 +32,13 @@ export const en = {
   "login-errormsgpassword": "The password you entered is incorrect",
   "login-loginbtn": "Sign in",
 
+  "help-title": "Help",
+
+
   "lang-sv": "Swedish",
-  "lang-en": "English"
+  "lang-en": "English",
+
+  "help-order-string" : "To order a beer, just click the beer.",
+  "help-security-string": "You can report security issues in the security section.",
+  "help-staff-string" : "You can restock by clicking \"restock\", in the orders section.",
 }

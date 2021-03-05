@@ -71,9 +71,9 @@ export default class Header {
         $(mainButton).on("click", () => {
             history.pushState("Main", "/");
         });
-        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-aboutus"></span></li>');
+        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-help"></span></li>');
         $(aboutUsButton).on("click", () => {
-            history.pushState("About us", "/om-oss");
+            history.pushState("About us", "/help");
         });
         let logInButton = $('<li class="menu-button"><span data-textid="nav-login"></span></li>');
         $(logInButton).on("click", () => {
