@@ -12,6 +12,7 @@ export default class Content {
     render = () => {
         var content = $('<div class="content-container"></div>');
         $(content).append(this.createLoginForm());
+        window.lang.generateStrings(content);
         return content;
     };
 
@@ -26,13 +27,11 @@ export default class Content {
         $(line_form).append(form);
         $(form).append(form_content);
 
-        let login = $('<div id="login">Log in</div>');
+        let login = $('<div id="login"><span data-textid="login-title"></span></div>');
         let cont_username = $('<div class="container-input"></div>');
         let cont_password = $('<div class="container-input"></div>');
         let cont_btn = $('<div id="container-btn"></div>');
-        let btn_login = $(
-            '<input id="login-btn" type="submit" value="Sign in"/>'
-        );
+        let btn_login = $('<div class="button-on-light" style="border: #f1e9cd 1px solid; margin: 0.2em"><span data-textid="login-loginbtn"></span></div>');
 
         $(form_content).append(login);
         $(form_content).append(cont_username);
@@ -41,13 +40,13 @@ export default class Content {
         $(cont_btn).append(btn_login);
 
         let label_username = $(
-            '<label class="label" for="Username">Username</label><br>'
+            '<label class="label" for="Username"><span data-textid="login-username"></label><br>'
         );
         let input_username = $(
             '<input class="input-txt" type="text" name="username" id="Username" required><br>'
         );
         let msg_username = $(
-            '<div class="txt-hide">The username you entered is incorrect</div>'
+            '<div class="txt-hide"><span data-textid="login-errormsgusername"></div>'
         );
 
         $(cont_username).append(label_username);
@@ -55,13 +54,13 @@ export default class Content {
         $(cont_username).append(msg_username);
 
         let label_password = $(
-            '<label class="label" for="Password">Password</label><br>'
+            '<label class="label" for="Password"><span data-textid="login-password"></label><br>'
         );
         let input_password = $(
             '<input class="input-txt" type="password" name="password" id="Password" required><br>'
         );
         let msg_password = $(
-            '<div class="txt-hide">The password you entered is incorrect</div>'
+            '<div class="txt-hide"><span data-textid="login-errormsgpassword"></div>'
         );
 
         $(cont_password).append(label_password);
@@ -91,6 +90,10 @@ export default class Content {
             for (i = 0; i < this.data.length; i++) {
                 if (input_username[0].value == this.data[i].username) {
                     if (input_password[0].value == this.data[i].password) {
+                        let userDetails = window.Database.userDetails(input_username[0].value);
+                        userDetails = JSON.stringify(userDetails);
+                        localStorage.setItem('loggedInUser', userDetails);
+                        console.log("succeSS");
                         break;
                     } else {
                         /*msg_username[0].className = "show";*/

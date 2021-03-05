@@ -99,10 +99,6 @@ export default class Header {
         $(menuVipButton).on("click", () => {
             history.pushState("MenuVip", "/menu-vip");
         });
-        let menuStaffButton = $('<li class="menu-button"><span data-textid="nav-staff"></span></li>');
-        $(menuStaffButton).on("click", () => {
-            history.pushState("MenuStaff", "/menu-staff");
-        });
 
         // Decides which button in the header that is active at a given time
         switch (this.activePage) {
@@ -138,10 +134,6 @@ export default class Header {
                 $(menuVipButton).addClass("active");
                 break;
             }
-            case "menu Staff": {
-                $(menuStaffButton).addClass("active");
-                break;
-            }
         }
 
         $(menu_wrp).append(mainButton);
@@ -152,7 +144,6 @@ export default class Header {
         $(menu_wrp).append(ordersButton);
         $(menu_wrp).append(productsButton);
         $(menu_wrp).append(menuVipButton);
-        $(menu_wrp).append(menuStaffButton);
 
         return menu_wrp;
     };

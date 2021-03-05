@@ -14,6 +14,24 @@ export const en = {
   "nav-vip": "Menu VIP",
   "nav-staff": "Menu Staff",
 
+  "prod-strength": "Alc. Volume",
+  "prod-country": "Country",
+  "prod-type": "Type",
+  "prod-serving": "Serving Size",
+  "prod-info": "Information",
+  "prod-stock": "Stock Amount",
+  "prod-disable": "Remove Item",
+  "prod-enable": "Add Item",
+  "prod-change_stk": "Edit Stock Amount",
+  "prod-change_stk-conf": "Confirm Stock Change",
+
+  "login-title": "Sign in",
+  "login-username": "Username",
+  "login-password": "Password",
+  "login-errormsgusername": "The username you entered is incorrect",
+  "login-errormsgpassword": "The password you entered is incorrect",
+  "login-loginbtn": "Sign in",
+
   "lang-sv": "Swedish",
   "lang-en": "English"
 }
