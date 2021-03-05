@@ -18,6 +18,19 @@ export const sv = {
   "prod-country": "Land",
   "prod-type": "Typ",
   "prod-serving": "Servering i",
+  "prod-info": "Information",
+  "prod-stock": "Lagerantal",
+  "prod-disable": "Ta bort produkt",
+  "prod-enable": "Lägg till produkt",
+  "prod-change_stk": "Ändra lagerantal",
+  "prod-change_stk-conf": "Bekräfta ändring i lagerantal",
+
+  "login-title": "Logga in",
+  "login-username": "Användarnamn",
+  "login-password": "Lösenord",
+  "login-errormsgusername": "Användarnamnet du har angett är felaktigt",
+  "login-errormsgpassword": "Lösenordet du har angett är felaktigt",
+  "login-loginbtn": "Logga in",
 
   "lang-sv": "Svenska",
   "lang-en": "Engelska"

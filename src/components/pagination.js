@@ -42,4 +42,42 @@ export default class Pagination {
 
         return { from: from, to: to };
     };
+
+    /**
+     * Creates the pagination options on a page
+     * @param {element} elem 
+     * @param {function} prev_func 
+     * @param {function} next_func
+     * @returns The pagination element
+     */
+    createPagination = (elem, func) => {
+        let counter_wrp = $('<div class="page-counter-text-wrp"></div>')
+
+        let currPage = this.getPage();
+        let totalPages = this.totalAmountPages();
+
+        let prev_page_btn = $('<div id="prevPage" class="button noselect button-on-dark title disabled">Prev</div>');
+        let page_counter = $('<div id="currPage" class="page-counter-text">' + currPage + '</div>...<div class="page-counter-text">' + totalPages + '</div>');
+        let next_page_btn = $('<div id="nextPage" class="button noselect button-on-dark title">Next</div>');
+
+        $(counter_wrp).append(page_counter);
+
+        $(next_page_btn).on('click', () => {
+            this.nextPage();
+            let pagination_settings = this.getSpan();
+            func(pagination_settings.from, pagination_settings.to);
+        });
+
+        $(prev_page_btn).on('click', () => {
+            this.previousPage();
+            let pagination_settings = this.getSpan();
+            func(pagination_settings.from, pagination_settings.to);
+        });
+
+        $(elem).append(prev_page_btn);
+        $(elem).append(counter_wrp);
+        $(elem).append(next_page_btn);
+
+        return elem;
+    }
 }
