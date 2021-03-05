@@ -3,7 +3,7 @@
  */
 
 import Router from "./views/router.js"; // Handles switching between pages
-import MainPage from "./views/main.js"; // MainPage is the Product page since it's the home page.
+import MainPage from "./views/main.js"; // MainPage is the Product page since it's the home page. The product page is run by card.js, which writes the content based on the user logged in
 import AboutUsPage from "./views/aboutus.js"; // Help-page, place where you can learn how to use the system
 import LogInPage from "./views/login.js"; // The page where you login
 import SecurityPage from "./views/security.js"; // Report a security issue
@@ -11,7 +11,6 @@ import SecurityAdminPage from "./views/securityAdmin.js"; // See the reported se
 import OrdersPage from "./views/orders.js"; // See and manage current orders
 import ProductsPage from "./views/products.js"; // The manager can manage the products (order refill, revise stock, add/remove products etc)
 import MenuVipPage from "./views/menuvip.js"; // The product page for the VIP customers (ability to order/pay from table)
-import MenuStaffPage from "./views/menustaff.js"; // Product page for staff and do smaller management (remove product temporarily, see availability of product, modify price of product)
 
 import { DB } from "./db/DBLoaded.js"; // database containing user data
 import { DB2 } from "./db/Beverages.js"; // database containing beverages
@@ -33,11 +32,6 @@ export default class App {
             { path: "/orders", component: OrdersPage, title: "Orders" },
             { path: "/products", component: ProductsPage, title: "Products" },
             { path: "/menu-vip", component: MenuVipPage, title: "Menu VIP" },
-            {
-                path: "/menu-staff",
-                component: MenuStaffPage,
-                title: "Menu Staff",
-            },
         ]);
         this.state = JSON.parse(localStorage.getItem("state")) || { users: DB };
 
