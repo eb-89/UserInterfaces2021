@@ -16,6 +16,7 @@ import { DB } from "./db/DBLoaded.js"; // the import {DB}/{DB2} is a new way of 
 import { DB2 } from "./db/Beverages.js";
 import SecurityData from "./db/SecurityData.js";
 import Database from "./db/database.js";
+import OrdersData from "./db/OrdersData.js";
 
 import Lang from "./lang/lang.js";
 
@@ -50,6 +51,11 @@ export default class App {
          * Security Data
          */
         window.SecurityData = new SecurityData();
+
+        /**
+         * Orders Data
+         */
+        window.OrdersData = new OrdersData();
 
         /**
          * Language object
