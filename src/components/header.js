@@ -71,9 +71,9 @@ export default class Header {
         $(mainButton).on("click", () => {
             history.pushState("Main", "/");
         });
-        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-aboutus"></span></li>');
+        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-help"></span></li>');
         $(aboutUsButton).on("click", () => {
-            history.pushState("About us", "/om-oss");
+            history.pushState("About us", "/help");
         });
         let logInButton = $('<li class="menu-button"><span data-textid="nav-login"></span></li>');
         $(logInButton).on("click", () => {
@@ -98,10 +98,6 @@ export default class Header {
         let menuVipButton = $('<li class="menu-button"><span data-textid="nav-vip"></span></li>');
         $(menuVipButton).on("click", () => {
             history.pushState("MenuVip", "/menu-vip");
-        });
-        let menuStaffButton = $('<li class="menu-button"><span data-textid="nav-staff"></span></li>');
-        $(menuStaffButton).on("click", () => {
-            history.pushState("MenuStaff", "/menu-staff");
         });
 
         // Decides which button in the header that is active at a given time
@@ -138,10 +134,6 @@ export default class Header {
                 $(menuVipButton).addClass("active");
                 break;
             }
-            case "menu Staff": {
-                $(menuStaffButton).addClass("active");
-                break;
-            }
         }
 
         $(menu_wrp).append(mainButton);
@@ -152,7 +144,6 @@ export default class Header {
         $(menu_wrp).append(ordersButton);
         $(menu_wrp).append(productsButton);
         $(menu_wrp).append(menuVipButton);
-        $(menu_wrp).append(menuStaffButton);
 
         return menu_wrp;
     };

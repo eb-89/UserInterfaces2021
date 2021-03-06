@@ -1,6 +1,6 @@
 /*
 
-MAIN/PRODUCT PAGE
+MAIN/PRODUCT PAGE (Used by mainPage/content.js)
 
 */
 
@@ -38,6 +38,10 @@ BIG WRAPPERS
     align-items: center;
 }
 
+.disabled {
+    opacity: 0.5;
+}
+
 /*
 MAIN WRAPPER
 Contains: Image and MoreInfo-button
@@ -50,9 +54,14 @@ Contains: Image and MoreInfo-button
 }
 
 .main-btn-wrp {
-    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-left: 0.5em;
     margin-top: 0.5em;
+    margin-right: 0.5em;
+    position: relative;
+    z-index: 1;
 }
 
 .product-image-wrp {
@@ -81,13 +90,6 @@ Contains: Title and price
     width: 100%;
 }
 
-.product-line {
-    border-bottom: 3px solid #341001;
-    position: absolute;
-    width: 50%;
-    left: 25%;
-}
-
 .product-title {
     max-width: 100%;
     text-align: center;
@@ -102,6 +104,7 @@ Contains further information
 .product-text-wrp {
     display: flex;
     justify-content: space-between;
+    margin-top: 0.2em;
 }
 
 .product-desc-expand {
@@ -116,7 +119,6 @@ Contains further information
     left: 0.4em;
     background: #F1E9CD;
     flex-grow: 1;
-    opacity: 0.95;
 }
 
 .product-desc-expand > .title {
@@ -130,5 +132,14 @@ Contains further information
 }
 .desc-btn-wrp {
     margin-left: 0.2em;
-    margin-top: 0.2em;
+}
+
+.expanded-btn-wrp {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+}
+
+.stock-amount-input {
+    width: 50px;
 }

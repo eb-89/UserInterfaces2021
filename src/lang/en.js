@@ -5,7 +5,7 @@ export const en = {
   "sec-title": "Report Security Issue",
 
   "nav-products": "Products",
-  "nav-aboutus": "About us",
+  "nav-help": "Help",
   "nav-login": "Log in",
   "nav-security": "Security",
   "nav-securityAdmin": "SecurityAdmin",
@@ -18,6 +18,22 @@ export const en = {
   "prod-country": "Country",
   "prod-type": "Type",
   "prod-serving": "Serving Size",
+  "prod-info": "Information",
+  "prod-stock": "Stock Amount",
+  "prod-disable": "Remove Item",
+  "prod-enable": "Add Item",
+  "prod-change_stk": "Edit Stock Amount",
+  "prod-change_stk-conf": "Confirm Stock Change",
+
+  "login-title": "Sign in",
+  "login-username": "Username",
+  "login-password": "Password",
+  "login-errormsgusername": "The username you entered is incorrect",
+  "login-errormsgpassword": "The password you entered is incorrect",
+  "login-loginbtn": "Sign in",
+
+  "help-title": "Help",
+
 
   "order-table": "Table",
   "order-time": "Time",
@@ -28,5 +44,9 @@ export const en = {
   "order-header-delivered": "Delivered orders",
 
   "lang-sv": "Swedish",
-  "lang-en": "English"
+  "lang-en": "English",
+
+  "help-order-string" : "To order a beer, just click the beer.",
+  "help-security-string": "You can report security issues in the security section.",
+  "help-staff-string" : "You can restock by clicking \"restock\", in the orders section.",
 }
