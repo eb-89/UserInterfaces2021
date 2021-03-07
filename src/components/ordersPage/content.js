@@ -119,14 +119,15 @@ export default class Content {
         }
 
 
-        $(cont_card).append(card);
-        $(card).append(content_card);
         $(content_card).append(table);
         $(content_card).append(time);
         $(content_card).append(order);
-     
 
-       return cont_card;
+        $(card).append(content_card);
+
+        $(cont_card).append(card);
+        
+        return cont_card;
     }
 
 
