@@ -110,7 +110,7 @@ export default class Content {
                         '<div class="time"> ' + order_cont.time + '</div>'+
                     '</div>');
 
-        let order = $('<div class="container-order">'+'<div class="txt-order"><span data-textid="order-order"></span>:</div>')
+        let order = $('<div class="container-order"><div class="txt-order"><span data-textid="order-order"></span>:</div></div>')
 
 
         for (let i = 0; i < order_cont.items.length; i++){
@@ -118,14 +118,15 @@ export default class Content {
         }
 
 
-        $(cont_card).append(card);
-        $(card).append(content_card);
         $(content_card).append(table);
         $(content_card).append(time);
         $(content_card).append(order);
-     
 
-       return cont_card;
+        $(card).append(content_card);
+
+        $(cont_card).append(card);
+        
+        return cont_card;
     }
 
 
