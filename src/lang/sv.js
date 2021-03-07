@@ -34,6 +34,14 @@ export const sv = {
 
   "help-title": "Hjälp",
 
+  "order-table": "Bord",
+  "order-time": "Tid",
+  "order-order": "Beställning",
+  "order-delivered-btn": "Levererad",
+  "order-price": " kr",
+  "order-header-order": "Beställningar",
+  "order-header-delivered": "Levererade beställningar",
+
   "lang-sv": "Svenska",
   "lang-en": "Engelska",
 

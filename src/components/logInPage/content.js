@@ -96,7 +96,6 @@ export default class Content {
                         console.log("succeSS");
                         break;
                     } else {
-                        /*msg_username[0].className = "show";*/
                         msg_password[0].classList.remove("txt-hide");
                         msg_password[0].classList.add("txt-show");
                         break;

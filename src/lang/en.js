@@ -35,6 +35,14 @@ export const en = {
   "help-title": "Help",
 
 
+  "order-table": "Table",
+  "order-time": "Time",
+  "order-order": "Order",
+  "order-delivered-btn": "Delivered",
+  "order-price": " SEK",
+  "order-header-order": "Orders",
+  "order-header-delivered": "Delivered orders",
+
   "lang-sv": "Swedish",
   "lang-en": "English",
 

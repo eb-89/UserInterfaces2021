@@ -17,6 +17,7 @@ import { DB } from "./db/DBLoaded.js"; // database containing user data
 import { DB2 } from "./db/Beverages.js"; // database containing beverages
 import SecurityData from "./db/SecurityData.js"; // database containing reported security issues
 import Database from "./db/database.js"; // database functions
+import OrdersData from "./db/OrdersData.js";
 
 
 import Lang from "./lang/lang.js";
@@ -47,6 +48,11 @@ export default class App {
          * Security Data
          */
         window.SecurityData = new SecurityData();
+
+        /**
+         * Orders Data
+         */
+        window.OrdersData = new OrdersData();
 
         /**
          * Language object
