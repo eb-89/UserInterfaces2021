@@ -14,7 +14,6 @@ export default class Content {
 
 
     render = () => {
-        this.addOrderFunc();
         var content = $('<div class="content-container"></div>');
         $(content).append(this.allOrders());
         window.lang.generateStrings(content);
