@@ -111,7 +111,7 @@ export default class Content {
                         '<div class="time"> ' + order_cont.time + '</div>'+
                     '</div>');
 
-        let order = $('<div class="container-order">'+'<div class="txt-order"><span data-textid="order-order"></span>:</div>')
+        let order = $('<div class="container-order"><div class="txt-order"><span data-textid="order-order"></span>:</div></div>')
 
 
         for (let i = 0; i < order_cont.items.length; i++){
