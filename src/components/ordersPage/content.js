@@ -63,12 +63,12 @@ export default class Content {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
             ev.target.appendChild(document.getElementById(data));
-             ev.stopPropagation();
+            ev.stopPropagation();
         });
 
         $(cont_orders).on("dragover", (ev) => {
-           ev.preventDefault();
-           ev.stopPropagation();
+            ev.preventDefault();
+            ev.stopPropagation();
         });
 
         $(cont_del_orders).on("drop", (ev) => {
@@ -79,8 +79,8 @@ export default class Content {
         });
 
         $(cont_del_orders).on("dragover", (ev) => {
-           ev.preventDefault();
-           ev.stopPropagation();
+            ev.preventDefault();
+            ev.stopPropagation();
         });
 
         return all_orders;
@@ -94,7 +94,6 @@ export default class Content {
 
 
         $(cont_card).on("dragstart", (ev) => {
-            console.log(ev.originalEvent.dataTransfer);
             ev.originalEvent.dataTransfer.setData("text", ev.target.id);
             ev.stopPropagation();
         });
