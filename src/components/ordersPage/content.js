@@ -37,19 +37,24 @@ export default class Content {
     allOrders = () => {
         let all_orders = $('<div id="all-orders"></div>');
 
+        /* Order items */
         let orders = $('<div  id="orders"></div>');
-        let del_orders = $('<div  id="delivered-orders"></div>');
         let header_order = $('<div class="header-order"><span data-textid="order-header-order"></span></div>');
-        let header_del = $('<div class="header-delivered"><span data-textid="order-header-delivered"></span></div>');
         let cont_orders = $('<div  id="orders-container"></div>');
+        
+        $(orders).append(header_order);
+        $(orders).append(cont_orders);
+        
+        /* Delivered order items */
+        let del_orders = $('<div  id="delivered-orders"></div>');
+        let header_del = $('<div class="header-delivered"><span data-textid="order-header-delivered"></span></div>');
         let cont_del_orders = $('<div id="delivered-orders-container" ></div>');
-
+        
+        $(del_orders).append(header_del);
+        $(del_orders).append(cont_del_orders);
+        
         $(all_orders).append(orders);
         $(all_orders).append(del_orders);
-        $(del_orders).append(header_del);
-        $(orders).append(header_order);
-        $(del_orders).append(cont_del_orders);
-        $(orders).append(cont_orders);
 
         for (let i = 0; i < this.orders.length; i++){
             $(cont_orders).append(this.createOrderCard( this.orders[i], i));
