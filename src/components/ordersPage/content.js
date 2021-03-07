@@ -17,23 +17,24 @@ export default class Content {
         this.addOrderFunc();
         var content = $('<div class="content-container"></div>');
         $(content).append(this.allOrders());
-         window.lang.generateStrings(content);
+        window.lang.generateStrings(content);
         return content;
     }
 
 //test function used for adding orders
-    addOrderFunc = () => {
+    // addOrderFunc = () => {
 
-            this.data.addOrder(4, [{item: "beer", price: "42"}]);
+    //         this.data.addOrder(4, [{item: "beer", price: "42"}]);
 
-            this.data.addOrder(5, [{item: "drink", price: "89"}]);
+    //         this.data.addOrder(5, [{item: "drink", price: "89"}]);
 
-            this.data.addOrder(5, [{item: "beer", price: "39"},{item: "wine", price: "49"}]);
+    //         this.data.addOrder(5, [{item: "beer", price: "39"},{item: "wine", price: "49"}]);
+    // }
 
-
-    }
-
-
+    /**
+     * Creates the box containing all orders 
+     * @returns A box containing  order-cards
+     */
     allOrders = () => {
         let all_orders = $('<div id="all-orders"></div>');
 
@@ -59,11 +60,16 @@ export default class Content {
         for (let i = 0; i < this.orders.length; i++){
             $(cont_orders).append(this.createOrderCard( this.orders[i], i));
         }
-         $(cont_orders).on("drop", (ev) => {
+
+        $(cont_orders).on("drop", (ev) => {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-            ev.stopPropagation();
+
+            if(ev.target.id === "orders-container"){
+                ev.target.appendChild(document.getElementById(data));
+                ev.stopPropagation(); 
+            }
+           
         });
 
         $(cont_orders).on("dragover", (ev) => {
@@ -74,8 +80,12 @@ export default class Content {
         $(cont_del_orders).on("drop", (ev) => {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-            ev.stopPropagation();
+
+            if(ev.target.id === "delivered-orders-container"){
+                ev.target.appendChild(document.getElementById(data));
+                ev.stopPropagation(); 
+            }
+           
         });
 
         $(cont_del_orders).on("dragover", (ev) => {
@@ -86,19 +96,19 @@ export default class Content {
         return all_orders;
     }
     
-    
+    /**
+     * Creates the box the box containing an order card
+     * @returns A box containing an order card
+     */
     createOrderCard = (order_cont,id) => {
         let cont_card = $('<div draggable="true" id="' + id + '" class="container-card"></div>');
         let card = $('<div class="order-card"></div>');
         let content_card = $('<div class="content-card"></div>');
 
-
         $(cont_card).on("dragstart", (ev) => {
             ev.originalEvent.dataTransfer.setData("text", ev.target.id);
             ev.stopPropagation();
         });
-
-
 
         let table = $('<div class="container-table">'+
                         '<div class="txt-table"><span data-textid="order-table"></span>:</div>'+
@@ -112,11 +122,9 @@ export default class Content {
 
         let order = $('<div class="container-order"><div class="txt-order"><span data-textid="order-order"></span>:</div></div>')
 
-
         for (let i = 0; i < order_cont.items.length; i++){
             $(order).append(this.addItems( order_cont.items[i]));
         }
-
 
         $(content_card).append(table);
         $(content_card).append(time);
@@ -129,9 +137,10 @@ export default class Content {
         return cont_card;
     }
 
-
-
-
+    /**
+     * Creates the box containing the ordered items from one order
+     * @returns A box containing the items from one order
+     */
     addItems = (product) => {
        let item_cont = $('<div class="container-items"></div>');
        let item = $('<div class="item">' + product.item + '</div>');
@@ -142,9 +151,4 @@ export default class Content {
 
        return item_cont;
     }
-
-
-
-
-
 }
