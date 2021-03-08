@@ -1,0 +1,144 @@
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  max-width:100%;
+  
+}
+
+td, th {
+  border: 1px solid #8f8f8f;
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #c3daca;
+}
+
+#dialog
+{
+    position:fixed;
+    background-color: azure;
+    width :250px;
+    height: 250px;
+    border: 2px solid black; 
+}
+
+#dialog_Header
+{   
+padding: 2px 4px;
+text-align: center;
+background-color: #5cb85c;
+color: white;
+}
+
+
+.modal-content {
+    display: none;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .close,#closeBtn:hover,
+  .close,#closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #closeBtn,#update_stock_button
+  {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50; /* Green */
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    
+  }
+  #update_stock_button,#add_stock_button
+  {
+    border-radius: 5% !important;
+    background-color: rgb(54, 139, 46);
+    color: rgb(255, 255, 255);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+  }
+
+  #update_stock_button,#add_stock_button:hover
+  {
+    background-color: rgb(36, 105, 30);
+  }
+  .modal-header {
+    padding: 2px 2px;
+    background-color: #5cb85c;
+    color: white;
+    text-align: center;
+    max-height: 40px;
+    
+  }
+  
+  .modal-body {padding: 2px 16px;}
+  
+  .modal-footer {
+    padding: 2px 8px 8px;
+    background-color: #5cb85c;
+    color: white;
+    max-height: 20px;
+    text-align: center;
+    
+  }
+  input[type=text], select {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #orderBtn
+  {
+    background-color: darkblue;
+    border: 2px white;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left:50%;
+    
+  }
+  caption{
+    font-family: 'Courier New', Courier, monospace;
+    
+  }
