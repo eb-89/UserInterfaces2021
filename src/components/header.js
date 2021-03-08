@@ -7,6 +7,13 @@ import LanguageSelector from './languageSelector.js'
 export default class Header {
     constructor(activePage) {
         this.activePage = activePage;
+
+        this.isVip = false;
+        this.isStaff = false;
+        if(localStorage.getItem('loggedInUser') != ''){
+            this.isVip = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 3;
+            this.isStaff = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 0;
+        }
     }
 
     init = () => {};
@@ -71,9 +78,9 @@ export default class Header {
         $(mainButton).on("click", () => {
             history.pushState("Main", "/");
         });
-        let aboutUsButton = $('<li class="menu-button"><span data-textid="nav-aboutus"></span></li>');
-        $(aboutUsButton).on("click", () => {
-            history.pushState("About us", "/om-oss");
+        let helpButton = $('<li class="menu-button"><span data-textid="nav-help"></span></li>');
+        $(helpButton).on("click", () => {
+            history.pushState("About us", "/help");
         });
         let logInButton = $('<li class="menu-button"><span data-textid="nav-login"></span></li>');
         $(logInButton).on("click", () => {
@@ -99,6 +106,12 @@ export default class Header {
         $(menuVipButton).on("click", () => {
             history.pushState("MenuVip", "/menu-vip");
         });
+        let logoutButton = $('<li class="menu-button"><span data-textid="nav-logout"></span></li>');
+        $(logoutButton).on("click", () => {
+            localStorage.setItem('loggedInUser', '');
+            // Redirect to main-page when logging out.
+            history.pushState("Main", "/");
+        });
 
         // Decides which button in the header that is active at a given time
         switch (this.activePage) {
@@ -107,7 +120,7 @@ export default class Header {
                 break;
             }
             case "about us": {
-                $(aboutUsButton).addClass("active");
+                $(helpButton).addClass("active");
                 break;
             }
             case "log in": {
@@ -137,13 +150,19 @@ export default class Header {
         }
 
         $(menu_wrp).append(mainButton);
-        $(menu_wrp).append(aboutUsButton);
+        $(menu_wrp).append(helpButton);
         $(menu_wrp).append(logInButton);
-        $(menu_wrp).append(securityButton);
-        $(menu_wrp).append(securityAdminButton);
-        $(menu_wrp).append(ordersButton);
-        $(menu_wrp).append(productsButton);
-        $(menu_wrp).append(menuVipButton);
+        $(menu_wrp).append(logoutButton);
+        
+        if(this.isVip || this.isStaff){
+            $(menu_wrp).append(securityButton);
+            $(menu_wrp).append(menuVipButton);
+        }
+        if(this.isStaff){
+            $(menu_wrp).append(securityAdminButton);
+            $(menu_wrp).append(ordersButton);
+            $(menu_wrp).append(productsButton);
+        }
 
         return menu_wrp;
     };

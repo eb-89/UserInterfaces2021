@@ -5,14 +5,14 @@ export const sv = {
   "sec-title": "Anmäl säkerhetsproblem",
 
   "nav-products": "Produkter",
-  "nav-aboutus": "Om oss",
+  "nav-help": "Hjälp",
   "nav-login": "Logga in",
   "nav-security": "Säkerhet",
   "nav-securityAdmin": "Säkerhet Admin",
   "nav-orders": "Order",
   "nav-products": "Produkter",
   "nav-vip": "Meny VIP",
-  "nav-staff": "Meny Personal",
+  "nav-logout": "Logga ut",
 
   "prod-strength": "Alkoholhalt",
   "prod-country": "Land",
@@ -32,6 +32,20 @@ export const sv = {
   "login-errormsgpassword": "Lösenordet du har angett är felaktigt",
   "login-loginbtn": "Logga in",
 
+  "help-title": "Hjälp",
+
+  "order-table": "Bord",
+  "order-time": "Tid",
+  "order-order": "Beställning",
+  "order-delivered-btn": "Levererad",
+  "order-price": " kr",
+  "order-header-order": "Beställningar",
+  "order-header-delivered": "Levererade beställningar",
+
   "lang-sv": "Svenska",
-  "lang-en": "Engelska"
+  "lang-en": "Engelska",
+
+  "help-order-string" : "För att beställa en öl, klicka på ölen.",
+  "help-security-string": "Du kan rapportera säkerhetsproblem under \"Säkerhetsproblem\". ",
+  "help-staff-string" : "Du kan ombeställa genom att klicka \"ombeställ\" under \"order\". ",
 }

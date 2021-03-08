@@ -5,14 +5,14 @@ export const en = {
   "sec-title": "Report Security Issue",
 
   "nav-products": "Products",
-  "nav-aboutus": "About us",
+  "nav-help": "Help",
   "nav-login": "Log in",
   "nav-security": "Security",
   "nav-securityAdmin": "SecurityAdmin",
   "nav-orders": "Orders",
   "nav-products": "Products",
   "nav-vip": "Menu VIP",
-  "nav-staff": "Menu Staff",
+  "nav-logout": "Log out",
 
   "prod-strength": "Alc. Volume",
   "prod-country": "Country",
@@ -32,6 +32,21 @@ export const en = {
   "login-errormsgpassword": "The password you entered is incorrect",
   "login-loginbtn": "Sign in",
 
+  "help-title": "Help",
+
+
+  "order-table": "Table",
+  "order-time": "Time",
+  "order-order": "Order",
+  "order-delivered-btn": "Delivered",
+  "order-price": " SEK",
+  "order-header-order": "Orders",
+  "order-header-delivered": "Delivered orders",
+
   "lang-sv": "Swedish",
-  "lang-en": "English"
+  "lang-en": "English",
+
+  "help-order-string" : "To order a beer, just click the beer.",
+  "help-security-string": "You can report security issues in the security section.",
+  "help-staff-string" : "You can restock by clicking \"restock\", in the orders section.",
 }
