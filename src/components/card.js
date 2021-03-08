@@ -6,8 +6,8 @@ export default class Card {
         this.isVip = false;
         this.isStaff = false;
         if(localStorage.getItem('loggedInUser') != ''){
-            this.isVip = JSON.parse(localStorage.getItem('loggedInUser')) == 3;
-            this.isStaff = JSON.parse(localStorage.getItem('loggedInUser')) == 0;
+            this.isVip = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 3;
+            this.isStaff = JSON.parse(localStorage.getItem('loggedInUser')).credentials == 0;
         }
     }
 

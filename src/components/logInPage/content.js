@@ -93,7 +93,8 @@ export default class Content {
                         let userDetails = window.Database.userDetails(input_username[0].value);
                         userDetails = JSON.stringify(userDetails);
                         localStorage.setItem('loggedInUser', userDetails);
-                        console.log("succeSS");
+                        // Redirect to Menu VIP when successfully logged in
+                        history.pushState("MenuVip", "/menu-vip");
                         break;
                     } else {
                         msg_password[0].classList.remove("txt-hide");

@@ -12,7 +12,7 @@ export const en = {
   "nav-orders": "Orders",
   "nav-products": "Products",
   "nav-vip": "Menu VIP",
-  "nav-staff": "Menu Staff",
+  "nav-logout": "Log out",
 
   "prod-strength": "Alc. Volume",
   "prod-country": "Country",
