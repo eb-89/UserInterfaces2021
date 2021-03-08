@@ -12,7 +12,7 @@ export const sv = {
   "nav-orders": "Order",
   "nav-products": "Produkter",
   "nav-vip": "Meny VIP",
-  "nav-staff": "Meny Personal",
+  "nav-logout": "Logga ut",
 
   "prod-strength": "Alkoholhalt",
   "prod-country": "Land",
