@@ -86,3 +86,10 @@ Expansion menu for product cards
 .expansion-button.close:after {
     content: "\1431"; /* Unicode character for "minus" sign (-) */
 }
+
+.order-num{
+    /*height: 100%;*/
+    width: 100%;
+    padding: 0.2em 0.6em;
+    text-align: center;
+}

@@ -234,6 +234,32 @@ export default class Card {
          * Checks if the user is logged in as staff
          */
         if(this.isVip){
+            let order_num = $('<select name="order-num" class="order-num order-num-'+response.id+'">' +
+                '<option value="0">cups ?</option>' +
+                '</select>');
+            for(let i = 1; i < 10; i++){
+                $(order_num).append($('<option value=' + i + '>'+i+'</option>'));
+            }
+            let serving_type = $('<div class="product-text-wrp"></div>');
+            $(serving_type).append(order_num);
+            let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
+            let ord_btn = $('<div class="button-mar button-on-light"><span data-textid="order-order"></span></div>');
+            $(btn_wrp).append(ord_btn);
+
+            $(ord_btn).on('click', function() {
+                let order_num = $(".order-num-"+response.id+" option:selected").val();
+                if (order_num == 0) return;
+                let ordered_item = [];
+                for(let i=0; i<order_num; i++){
+                    ordered_item.push({item: response.namn,price:response.pris});
+                }
+                let vipId = "vip" + JSON.parse(localStorage.getItem('loggedInUser')).userID;
+                window.OrdersData.addOrder(vipId, ordered_item);
+                console.log(ordered_item);
+            });
+
+            $(serving_type).append(btn_wrp);
+            $(desc_expanded).append(serving_type);
 
         }
     }
