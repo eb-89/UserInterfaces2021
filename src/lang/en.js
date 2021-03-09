@@ -49,4 +49,11 @@ export const en = {
   "help-order-string" : "To order a beer, just click the beer.",
   "help-security-string": "You can report security issues in the security section.",
   "help-staff-string" : "You can restock by clicking \"restock\", in the orders section.",
+
+  "pagination-prev": "Prev",
+  "pagination-next": "Next",
+
+  "dropdown-products": "Show amount",
+  "dropdown-filter": "Filter",
+  "dropdown-reset": "Remove filter options",
 }
