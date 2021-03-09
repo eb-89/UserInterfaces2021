@@ -46,10 +46,12 @@ export default class Pagination {
         return { from: from, to: to };
     };
     
+    // Update the total products amount
     updateTotalProducts = (value) => {
         this.total_products = value;
     }
 
+    // Update the amount of products visible on the page
     updateProductsPerPage = (value) => {
         this.products_per_page = value;
     }

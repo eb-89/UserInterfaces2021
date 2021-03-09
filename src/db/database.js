@@ -122,10 +122,12 @@ export default class Database {
         return collector;
     }
 
-    // =====================================================================================================
-    // Returns a list of all the beverages:
-    // returns: 
-    //
+    /**
+     * Returns a list of beverages and some information about them
+     * If drinktype is set, it will return the beverages with the specific drink type.
+     * @param {string} drinktype 
+     * @returns A list of JSON objects containing information about beverages
+     */
     allBeveragesMoreDetailed(drinktype) {
         // Using a local variable to collect the items.
         let collector = []

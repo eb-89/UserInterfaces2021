@@ -1,6 +1,6 @@
 /**
  * This file creates the possiblity to swipe the screen
- * Code from: https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
+ * Code inspiration from: https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
  */
 
 export default class Swipe {

@@ -27,6 +27,10 @@ export default class Content {
         return content;
     };
 
+    /**
+     * 
+     * @returns Element containing the content of the page, excluding the filtering wrapper
+     */
     createContentBox = () => {
         let content = $('<div class="main-content-wrp"></div>');
 
@@ -63,6 +67,10 @@ export default class Content {
         return filter_wrp;
     };
 
+    /**
+     * Creates a button that resets the chosen filtering
+     * @returns Button to reset the filtering
+     */
     createResetFiltering = () => {
         let reset_btn = $(
             '<div class="dropdown-btn noselect"><span data-textid="dropdown-reset"></span></div>'
