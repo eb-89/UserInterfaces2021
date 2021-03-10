@@ -246,15 +246,26 @@ export default class Card {
             let ord_btn = $('<div class="button-mar button-on-light"><span data-textid="order-order"></span></div>');
             $(btn_wrp).append(ord_btn);
 
+            let userDetails = JSON.parse(localStorage.getItem('loggedInUser'));
             $(ord_btn).on('click', function() {
                 let order_num = $(".order-num-"+response.id+" option:selected").val();
                 if (order_num == 0) return;
                 let ordered_item = [];
+                let amount = 0;
                 for(let i=0; i<order_num; i++){
                     ordered_item.push({item: response.namn,price:response.pris});
+                    amount += parseFloat(response.pris);
                 }
-                let vipId = "vip" + JSON.parse(localStorage.getItem('loggedInUser')).userID;
+                let balance = userDetails['balance'];
+                if (amount > balance){
+                    alert("balance not enough");
+                    return ;
+                }
+                userDetails['balance'] -= amount;
+                localStorage.setItem('loggedInUser', JSON.stringify(userDetails));
+                let vipId = "vip" + userDetails['userID'];
                 window.OrdersData.addOrder(vipId, ordered_item);
+                $("#balance").text(userDetails['balance']);
                 console.log(ordered_item);
             });
 

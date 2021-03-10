@@ -9,7 +9,6 @@ export default class Content {
     }
 
     init = () => {
-        this.user = window.Database.DB.users[0] // TODO update the user id
         this.product = new Product();
         this.product.init();
     }
@@ -35,7 +34,7 @@ export default class Content {
         let balance = JSON.parse(localStorage.getItem('loggedInUser')).balance;
         inner = $('<div class="inner-item"></div>');
         inner.append($('<div class="item-name title bold">Account balance</div>'));
-        inner.append($('<div class="item-desc title">' + balance + '</div>'));
+        inner.append($('<div class="item-desc title" id="balance">' + balance + '</div>'));
 
         $(content).append(inner);
 
