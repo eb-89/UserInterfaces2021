@@ -32,10 +32,10 @@ export default class Content {
 
         $(content).append(inner);
 
-
+        let balance = JSON.parse(localStorage.getItem('loggedInUser')).balance;
         inner = $('<div class="inner-item"></div>');
         inner.append($('<div class="item-name title bold">Account balance</div>'));
-        inner.append($('<div class="item-desc title">' + 1234 + '</div>'));
+        inner.append($('<div class="item-desc title">' + balance + '</div>'));
 
         $(content).append(inner);
 
