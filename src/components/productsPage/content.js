@@ -20,7 +20,10 @@ export default class Content {
     }
     createOrderButton=()=>
     {
-      var orderButton = '<button id = "orderBtn" onclick = "onClick_CreateOrder()"> + OrderNewItem</button>';
+        //<span data-textid = "orderNewItemButton"></span>
+
+
+      var orderButton = '<button id = "orderBtn" onclick = "onClick_CreateOrder()"> <span data-textid = "orderNewItemButton"></span></button>';
       return orderButton;  
     }
     createEditDialog = () => {

@@ -55,4 +55,6 @@ export const sv = {
   "dropdown-products": "Visa antal",
   "dropdown-filter": "Filtrera",
   "dropdown-reset": "Ta bort filtrering",
+
+  "orderNewItemButton" : "+ beställNyArtikel",
 }

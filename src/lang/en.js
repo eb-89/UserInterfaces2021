@@ -56,4 +56,6 @@ export const en = {
   "dropdown-products": "Show amount",
   "dropdown-filter": "Filter",
   "dropdown-reset": "Remove filter options",
+
+  "orderNewItemButton" : "+ OrderNewItem",
 }
