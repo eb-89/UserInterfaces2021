@@ -246,7 +246,7 @@ export default class Card {
             let ord_btn = $('<div class="button-mar button-on-light"><span data-textid="order-order"></span></div>');
             $(btn_wrp).append(ord_btn);
 
-            let userDetails = JSON.parse(localStorage.getItem('loggedInUser'));
+
             $(ord_btn).on('click', function() {
                 let order_num = $(".order-num-"+response.id+" option:selected").val();
                 if (order_num == 0) return;
@@ -256,17 +256,17 @@ export default class Card {
                     ordered_item.push({item: response.namn,price:response.pris});
                     amount += parseFloat(response.pris);
                 }
-                let balance = userDetails['balance'];
+                let userDetails = JSON.parse(localStorage.getItem('loggedInUser'));
+                let balance = Database.getBalance(username);
                 if (amount > balance){
                     alert("balance not enough");
                     return ;
                 }
-                userDetails['balance'] -= amount;
-                localStorage.setItem('loggedInUser', JSON.stringify(userDetails));
+                balance -= amount;
+                Database.changeBalance(userDetails['userID'], balance);
                 let vipId = "vip" + userDetails['userID'];
                 window.OrdersData.addOrder(vipId, ordered_item);
-                $("#balance").text(userDetails['balance']);
-                console.log(ordered_item);
+                $("#balance").text(balance);
             });
 
             $(serving_type).append(btn_wrp);

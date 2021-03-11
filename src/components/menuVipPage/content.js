@@ -31,7 +31,8 @@ export default class Content {
 
         $(content).append(inner);
 
-        let balance = JSON.parse(localStorage.getItem('loggedInUser')).balance;
+        let username = JSON.parse(localStorage.getItem('loggedInUser')).username;
+        let balance = Database.getBalance(username);
         inner = $('<div class="inner-item"></div>');
         inner.append($('<div class="item-name title bold">Account balance</div>'));
         inner.append($('<div class="item-desc title" id="balance">' + balance + '</div>'));
