@@ -268,6 +268,7 @@ export default class Card {
                 let vipId = "vip" + userDetails['userID'];
                 window.OrdersData.addOrder(vipId, ordered_item);
                 $("#balance").text(balance);
+                $(".order-num-"+response.id).val(0);
             });
 
             $(serving_type).append(btn_wrp);
