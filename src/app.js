@@ -11,7 +11,6 @@ import SecurityPage from "./views/security.js"; // Report a security issue
 import SecurityAdminPage from "./views/securityAdmin.js"; // See the reported security issues
 import OrdersPage from "./views/orders.js"; // See and manage current orders
 import ProductsPage from "./views/products.js"; // The manager can manage the products (order refill, revise stock, add/remove products etc)
-import MenuVipPage from "./views/menuvip.js"; // The product page for the VIP customers (ability to order/pay from table)
 
 import { DB } from "./db/DBLoaded.js"; // database containing user data
 import { DB2 } from "./db/Beverages.js"; // database containing beverages
@@ -34,7 +33,6 @@ export default class App {
             { path: "/securityAdmin", component: SecurityAdminPage, title: "Security" },
             { path: "/orders", component: OrdersPage, title: "Orders" },
             { path: "/products", component: ProductsPage, title: "Products" },
-            { path: "/menu-vip", component: MenuVipPage, title: "Menu VIP" },
         ]);
         this.state = JSON.parse(localStorage.getItem("state")) || { users: DB };
 
