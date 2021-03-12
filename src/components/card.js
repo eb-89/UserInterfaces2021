@@ -257,13 +257,14 @@ export default class Card {
                     amount += parseFloat(response.pris);
                 }
                 let userDetails = JSON.parse(localStorage.getItem('loggedInUser'));
-                let balance = Database.getBalance(username);
+                let balance = window.Database.getBalance(userDetails['username']);
                 if (amount > balance){
                     alert("balance not enough");
                     return ;
                 }
                 balance -= amount;
-                Database.changeBalance(userDetails['userID'], balance);
+                console.log("balance 2: "+balance);
+                window.Database.changeBalance(userDetails['username'], balance);
                 let vipId = "vip" + userDetails['userID'];
                 window.OrdersData.addOrder(vipId, ordered_item);
                 $("#balance").text(balance);
