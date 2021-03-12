@@ -151,10 +151,11 @@ export default class Header {
 
         $(menu_wrp).append(mainButton);
         $(menu_wrp).append(helpButton);
-        $(menu_wrp).append(logInButton);
 
         if(localStorage.getItem('loggedInUser') != ''){
             $(menu_wrp).append(logoutButton);
+        }else{
+            $(menu_wrp).append(logInButton);
         }
         
         if(this.isVip || this.isStaff){
