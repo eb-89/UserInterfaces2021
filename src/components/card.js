@@ -275,4 +275,34 @@ export default class Card {
 
         }
     }
+
+
+    createVipSection = () => {
+        if(!this.isVip){return ;}
+        const content = $('<div class="vip-page-container"></div>');
+        let inner = $('<div class="inner-item"></div>');
+        inner.append($('<div class="item-name title bold">Password of combination lock</div>'));
+        inner.append($('<div class="item-desc title">' + this.getPassword() + '</div>'));
+
+        $(content).append(inner);
+
+        let username = JSON.parse(localStorage.getItem('loggedInUser')).username;
+        let balance = Database.getBalance(username);
+        inner = $('<div class="inner-item"></div>');
+        inner.append($('<div class="item-name title bold">Account balance</div>'));
+        inner.append($('<div class="item-desc title" id="balance">' + balance + '</div>'));
+
+        $(content).append(inner);
+
+        return content;
+    }
+
+    // Fucntion get fetch the password
+    // I use date as password so far
+    getPassword = () => {
+        const d = new Date();
+        const month = d.getMonth()+1;
+        const day = d.getDate();
+        return (month < 10 ? '0' : '') + month + (day < 10 ? '0' : '') + day;
+    }
 }

@@ -17,9 +17,18 @@ export default class Content {
 
     render = () => {
         let content = $('<div class="content-container"></div>');
+        $(content).append(this.createInformationBox());
         $(content).append(this.createFilteringOptions());
         $(content).append(this.createProductMenu());
         return content;
+    }
+
+    /**
+     * Creates VIP feature section
+     * @returns VIP section elements
+     */
+    createInformationBox = () => {
+        return this.card.createVipSection();
     }
 
     /**
