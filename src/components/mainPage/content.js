@@ -82,9 +82,7 @@ export default class Content {
             this.pagination.updateTotalProducts(this.data.length);
             this.pagination.updateProductsPerPage(this.products_per_page);
 
-            setTimeout( () => {
-                this.updateProductView(0, this.getProductsPerPage());
-            }, 150); // Bad solution to achieve the wanted effect of making the system wait for the products to filter
+            this.updateProductView(0, this.getProductsPerPage());
         });
 
         window.lang.generateStrings(reset_btn);
