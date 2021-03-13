@@ -102,10 +102,6 @@ export default class Header {
         $(productsButton).on("click", () => {
             history.pushState("Products", "/products");
         });
-        let menuVipButton = $('<li class="menu-button"><span data-textid="nav-vip"></span></li>');
-        $(menuVipButton).on("click", () => {
-            history.pushState("MenuVip", "/menu-vip");
-        });
         let logoutButton = $('<li class="menu-button"><span data-textid="nav-logout"></span></li>');
         $(logoutButton).on("click", () => {
             localStorage.setItem('loggedInUser', '');
@@ -143,20 +139,19 @@ export default class Header {
                 $(productsButton).addClass("active");
                 break;
             }
-            case "menu VIP": {
-                $(menuVipButton).addClass("active");
-                break;
-            }
         }
 
         $(menu_wrp).append(mainButton);
         $(menu_wrp).append(helpButton);
-        $(menu_wrp).append(logInButton);
-        $(menu_wrp).append(logoutButton);
+
+        if(localStorage.getItem('loggedInUser') != ''){
+            $(menu_wrp).append(logoutButton);
+        }else{
+            $(menu_wrp).append(logInButton);
+        }
         
         if(this.isVip || this.isStaff){
             $(menu_wrp).append(securityButton);
-            $(menu_wrp).append(menuVipButton);
         }
         if(this.isStaff){
             $(menu_wrp).append(securityAdminButton);

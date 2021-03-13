@@ -177,11 +177,18 @@ Contains further information
 }
 
 .expanded-btn-wrp {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5em;
+    display:flex;
 }
 
-.stock-amount-input {
+.stock-amount-input, .price-change-input {
     width: 50px;
+}
+
+.order-num{
+    margin: auto;
+}
+.order-amount{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%
 }
