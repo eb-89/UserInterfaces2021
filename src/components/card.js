@@ -231,16 +231,18 @@ export default class Card {
         }
 
         /**
-         * Checks if the user is logged in as staff
+         * Checks if the user is logged in as VIP
          */
         if(this.isVip){
-            let order_num = $('<select name="order-num" class="order-num order-num-'+response.id+'">' +
-                '<option value="0">cups ?</option>' +
+            let serving_type = $('<div class="product-text-wrp"></div>');
+            let order_title = $('<div class="order-amount subtitle bold"><span data-textid="order-amount"></span>: </div>');
+            $(serving_type).append(order_title);
+            let order_num = $(
+                '<select name="order-num" class="order-num order-num-'+response.id+'">' +
                 '</select>');
-            for(let i = 1; i < 10; i++){
+            for(let i = 0; i < 10; i++){
                 $(order_num).append($('<option value=' + i + '>'+i+'</option>'));
             }
-            let serving_type = $('<div class="product-text-wrp"></div>');
             $(serving_type).append(order_num);
             let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
             let ord_btn = $('<div class="button-mar button-on-light"><span data-textid="order-order"></span></div>');

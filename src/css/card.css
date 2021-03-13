@@ -46,3 +46,12 @@ CARD styling
     top: 3px;
     left: 3px;
 }
+
+.order-num{
+    margin: auto;
+}
+.order-amount{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%
+}
