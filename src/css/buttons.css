@@ -61,6 +61,8 @@ If the button is on a dark background (such as the background image)
 /* Special margin class */
 .button-mar {
   margin-top: 0.5em;
+  margin-left:0.2em;
+  margin-right:0.2em;
 }
 
 /*

@@ -23,7 +23,11 @@ export const en = {
   "prod-disable": "Remove Item",
   "prod-enable": "Add Item",
   "prod-change_stk": "Edit Stock Amount",
-  "prod-change_stk-conf": "Confirm Stock Change",
+  "prod-change_stk-conf": "Confirm stock",
+  "prod-change-price": "Edit price",
+  "prod-price-change": "Price",
+  "prod-change-price-conf": "Confirm price",
+  "prod-price-sek": " SEK",
 
   "login-title": "Sign in",
   "login-username": "Username",
