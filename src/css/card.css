@@ -177,9 +177,6 @@ Contains further information
 }
 
 .expanded-btn-wrp {
-    /*display: flex;
-    flex-direction: column;
-    margin: 0.5em;*/
     display:flex;
 }
 
