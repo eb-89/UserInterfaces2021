@@ -245,7 +245,7 @@ export default class Card {
             }
             $(serving_type).append(order_num);
             let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
-            let ord_btn = $('<div class="button-mar button-on-light"><span data-textid="order-order"></span></div>');
+            let ord_btn = $('<div class="button-on-light"><span data-textid="order-order"></span></div>');
             $(btn_wrp).append(ord_btn);
 
 
