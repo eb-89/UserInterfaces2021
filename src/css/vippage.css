@@ -1,0 +1,21 @@
+.vip-page-container{
+    width: 50%;
+    background: #f1e9cd;
+    padding: 20px;
+}
+
+.item-inner {
+    background: #f1e9cd;
+    position: absolute;
+}
+
+.item-name {
+    width: 80%;
+    float: left;
+}
+
+.item-desc {
+    float: left;
+    width: 20%;
+    text-align: center;
+}

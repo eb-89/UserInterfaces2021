@@ -22,6 +22,7 @@ export default class Content {
 
     render = () => {
         let content = $('<div class="content-container"></div>');
+        $(content).append(this.createInformationBox());
         $(content).append(this.createFiltering());
         $(content).append(this.createContentBox());
         return content;
@@ -47,6 +48,14 @@ export default class Content {
 
         return content;
     };
+
+    /**
+     * Creates VIP feature section
+     * @returns VIP section elements
+     */
+    createInformationBox = () => {
+        return this.card.createVipSection();
+    }
 
     /**
      * Creates the filtering option element

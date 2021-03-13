@@ -186,3 +186,12 @@ Contains further information
 .stock-amount-input, .price-change-input {
     width: 50px;
 }
+
+.order-num{
+    margin: auto;
+}
+.order-amount{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%
+}

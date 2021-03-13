@@ -104,6 +104,31 @@ export default class Database {
         }
     }
 
+    // ============================
+    // This function will return the credit amount in the user's account.
+    getBalance(userName) {
+        // We use this variable to store the userID, since that is the link between the two data bases.
+        var userID;
+
+        // First we find the userID in the user data base.
+        //
+        for (let i = 0; i < this.DB.users.length; i++) {
+            if (this.DB.users[i].username == userName) {
+                userID = this.DB.users[i].user_id;
+            }
+        }
+
+        // Then we match the userID with the account list.
+        // and change the account balance.
+        //
+        for (let i = 0; i < this.DB.account.length; i++) {
+            if (this.DB.account[i].user_id == userID) {
+                return this.DB.account[i].creditSEK; // This changes the value in the JSON object.
+            }
+        }
+        return null;
+    }
+
     // =====================================================================================================
     // Returns a list of all the names of the beverages in the database. This function can be used as a
     // recipe for similar functions.

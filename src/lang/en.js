@@ -46,6 +46,7 @@ export const en = {
   "order-price": " SEK",
   "order-header-order": "Orders",
   "order-header-delivered": "Delivered orders",
+  "order-amount": "Amount",
 
   "lang-sv": "Swedish",
   "lang-en": "English",
