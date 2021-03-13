@@ -263,7 +263,6 @@ export default class Card {
                     return ;
                 }
                 balance -= amount;
-                console.log("balance 2: "+balance);
                 window.Database.changeBalance(userDetails['username'], balance);
                 let vipId = "vip" + userDetails['userID'];
                 window.OrdersData.addOrder(vipId, ordered_item);
