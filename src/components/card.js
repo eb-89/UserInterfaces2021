@@ -231,10 +231,80 @@ export default class Card {
         }
 
         /**
-         * Checks if the user is logged in as staff
+         * Checks if the user is logged in as VIP
          */
         if(this.isVip){
+            let serving_type = $('<div class="product-text-wrp"></div>');
+            let order_title = $('<div class="order-amount subtitle bold"><span data-textid="order-amount"></span>: </div>');
+            $(serving_type).append(order_title);
+            let order_num = $(
+                '<select name="order-num" class="order-num order-num-'+response.id+'">' +
+                '</select>');
+            for(let i = 0; i < 10; i++){
+                $(order_num).append($('<option value=' + i + '>'+i+'</option>'));
+            }
+            $(serving_type).append(order_num);
+            let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
+            let ord_btn = $('<div class="button-mar button-on-light"><span data-textid="order-order"></span></div>');
+            $(btn_wrp).append(ord_btn);
+
+
+            $(ord_btn).on('click', function() {
+                let order_num = $(".order-num-"+response.id+" option:selected").val();
+                if (order_num == 0) return;
+                let ordered_item = [];
+                let amount = 0;
+                for(let i=0; i<order_num; i++){
+                    ordered_item.push({item: response.namn,price:response.pris});
+                    amount += parseFloat(response.pris);
+                }
+                let userDetails = JSON.parse(localStorage.getItem('loggedInUser'));
+                let balance = window.Database.getBalance(userDetails['username']);
+                if (amount > balance){
+                    alert("balance not enough");
+                    return ;
+                }
+                balance -= amount;
+                window.Database.changeBalance(userDetails['username'], balance);
+                let vipId = "vip" + userDetails['userID'];
+                window.OrdersData.addOrder(vipId, ordered_item);
+                $("#balance").text(balance);
+                $(".order-num-"+response.id).val(0);
+            });
+
+            $(serving_type).append(btn_wrp);
+            $(desc_expanded).append(serving_type);
 
         }
+    }
+
+
+    createVipSection = () => {
+        if(!this.isVip){return ;}
+        const content = $('<div class="vip-page-container"></div>');
+        let inner = $('<div class="inner-item"></div>');
+        inner.append($('<div class="item-name title bold">Password of combination lock</div>'));
+        inner.append($('<div class="item-desc title">' + this.getPassword() + '</div>'));
+
+        $(content).append(inner);
+
+        let username = JSON.parse(localStorage.getItem('loggedInUser')).username;
+        let balance = Database.getBalance(username);
+        inner = $('<div class="inner-item"></div>');
+        inner.append($('<div class="item-name title bold">Account balance</div>'));
+        inner.append($('<div class="item-desc title" id="balance">' + balance + '</div>'));
+
+        $(content).append(inner);
+
+        return content;
+    }
+
+    // Fucntion get fetch the password
+    // I use date as password so far
+    getPassword = () => {
+        const d = new Date();
+        const month = d.getMonth()+1;
+        const day = d.getDate();
+        return (month < 10 ? '0' : '') + month + (day < 10 ? '0' : '') + day;
     }
 }

@@ -41,6 +41,7 @@ export const sv = {
   "order-price": " kr",
   "order-header-order": "Beställningar",
   "order-header-delivered": "Levererade beställningar",
+  "order-amount": "Antal",
 
   "lang-sv": "Svenska",
   "lang-en": "Engelska",
