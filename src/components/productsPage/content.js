@@ -31,19 +31,20 @@ export default class Content {
         var modal = '<div class="modal-content">';
         modal += '<div class="modal-header">';
         modal += '<span class="close"><button id = "closeBtn" type="button" onclick="OnCloseDialog()">X</button></span>';
-        modal += ' <h5 id ="modalHeader">Update Stock Data</h5>';
+        modal += ' <h4 id ="modalHeader"><span data-textid = "UpdateHeaderlabel"></span><span data-textid = "OrderNewHeaderlabel"></span></h4>';
         modal += '</div>';
         modal += '<div class="modal-body">';
         modal += ' <input type = "hidden" id = "tf_transactionid"/>';
-        modal += ' <label>Admin ID : </label><input type = "text" id = "tf_adminid"/><br/>';
-        modal += ' <label>Beer ID : </label><input type = "text" id = "tf_beerid"/><br/>';
-        modal += ' <label>Price : </label><input type = "text" id = "tf_price"/><br/>';
-        modal += ' <label>Amount : </label><input type = "text" id = "tf_amount"/><br/>';
-        modal += '<Button type ="button" id = "update_stock_button" onclick = "OnUpdateStock()">Update</button>';
-        modal += '<Button type ="button" id = "add_stock_button" onclick = "onCreateNewOrder()">Save</button>';
+        modal += ' <label><span data-textid = "AdminIDLabel"></span></label><input type = "text" id = "tf_adminid"/><br/>';
+        modal += ' <label><span data-textid = "BeerIDLabel"></span> </label><input type = "text" id = "tf_beerid"/><br/>';
+        modal += ' <label> <span data-textid = "PriceIDLabel"></span></label><input type = "text" id = "tf_price"/><br/>';
+        modal += ' <label><span data-textid = "AmountIDLabel"></span> </label><input type = "text" id = "tf_amount"/><br/>';
+        modal += '<Button type ="button" id = "update_stock_button" onclick = "OnUpdateStock()"><span data-textid = "UpdateButtonID"></span></button>';
+        modal += '<Button type ="button" id = "add_stock_button" onclick = "onCreateNewOrder()"><span data-textid = "SaveButtonID"></span></button>';
         modal += '</div>';
         modal += '<div class="modal-footer"></div>'
         modal += '</div></div>';
+       
         return modal;
     }
 
@@ -54,8 +55,8 @@ export default class Content {
         var content = $('<div class="content-container"></div>');
 
         var table = '<table border=1px solid black>';
-        table += '<caption> Bought Items </caption>';
-        table += '<tr><th>Transaction ID</th><th>Admin ID<th>Beer ID</th><th>Amount</th><th>Price</th><th>Time</th><th>Remaining stock</th><th colspan ="2">Actions</th></tr>';
+        table += '<caption> <span data-textid = "TableCaptionLabel"></span></caption>';
+        table += '<tr><th><span data-textid = "TransactionIDLabel"></span></th><th><span data-textid = "AdminIDLabel"></span><th><span data-textid = "BeerIDLabel"></span> </th><th><span data-textid = "AmountIDLabel"></span></th><th><span data-textid = "PriceIDLabel"></span></th><th><span data-textid = "TimeIDLabel"></span></th><th><span data-textid = "RemainingIDLabel"></span></th><th colspan ="2"><span data-textid = "ActionsIDLabel"></span></th></tr>';
         
         var rows = boughtItems.length;
 
@@ -65,9 +66,9 @@ export default class Content {
             table += '<td>' + boughtItems[row].transaction_id + '</td><td>' + boughtItems[row].admin_id + '</td><td>' + boughtItems[row].beer_id +
                 '</td><td>' + boughtItems[row].amount + '</td><td>' + boughtItems[row].price + '</td><td>' + boughtItems[row].timestamp +
                 '</td><td>'+stockquantity+'</td><td><button id = "editButton" type = "button" value = "' + boughtItems[row].transaction_id +
-                '" onclick = edit("' + boughtItems[row].transaction_id + '")>Edit</button></td>';
+                '" onclick = edit("' + boughtItems[row].transaction_id + '")><span data-textid = "EditButtonLabel"></span></button></td>';
                 table+='<td><button id = "deleteButton" type = "button" value = "' + boughtItems[row].transaction_id +
-                '" onclick = ondelete("' + boughtItems[row].transaction_id + '")>Delete</button></td>';
+                '" onclick = ondelete("' + boughtItems[row].transaction_id + '")><span data-textid = "DeleteButtonLabel"></span></button></td>';
             table += '</tr>';
         }
         

@@ -56,5 +56,21 @@ export const sv = {
   "dropdown-filter": "Filtrera",
   "dropdown-reset": "Ta bort filtrering",
 
+
   "orderNewItemButton" : "+ beställNyArtikel",
+  "AdminIDLabel" : "Administratörs-ID",
+  "BeerIDLabel" : "öl-ID",
+  "PriceIDLabel" : "Pris",
+  "AmountIDLabel" : "Belopp",
+  "UpdateButtonID" : "uppdatering",
+  "SaveButtonID" : "spara",
+  "TransactionIDLabel" : "Transaktion ID",
+  "TimeIDLabel" : "Tid",
+  "RemainingIDLabel" : "Återstående lager",
+  "ActionsIDLabel" : "Åtgärder",
+  "DeleteButtonLabel" : "Radera",
+  "EditButtonLabel" : "Redigera",
+  "TableCaptionLabel" : "Köpte artiklar",
+  "UpdateHeaderlabel" : "Redigera och uppdatera detaljer",
+  "OrderNewHeaderlabel" : "Beställ ny artikel",
 }

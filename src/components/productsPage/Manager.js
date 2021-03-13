@@ -10,7 +10,10 @@ function OnCloseDialog() {
 // function to get the item details by transectionID and populate values in dialog to modify
 function edit(transectionID) {
     $(".modal-content").show();
-    $("#modalHeader").text("Edit and Update details");
+    $("#modalHeader").text("Edit and Update details / Redigera och uppdatera detaljer");
+ //  $("#UpdateHeaderlabel").show();
+  // $("#OrderNewHeaderlabel").hide();
+
     $("#update_stock_button").show();
     $("#add_stock_button").hide();
 
@@ -47,7 +50,10 @@ function OnUpdateStock() {
 function onClick_CreateOrder() {
     // showing the dialog and changing the header text
     $(".modal-content").show();
-    $("#modalHeader").text("Order New Item");
+    $("#modalHeader").text("Order New Item / Beställ ny artikel");
+   // $("#UpdateHeaderlabel").hide();
+    //$("#OrderNewHeaderlabel").show();
+    
     // hiding update button and showing the save button
     $("#update_stock_button").hide();
     $("#add_stock_button").show();
@@ -79,9 +85,16 @@ function onCreateNewOrder() {
 
 // function to call on delete button click
 function ondelete(transactionID) {
+    // asking user to confirm the deletion
+    var choice = confirm("Are you sure! / är du säker!");
+    if (!choice) 
+    return;
+//getting response of deletion from database
     var response = window.deleteBoughtTransaction(transactionID);
     if (response) {
         // sucessfully Deleted Item
         location.reload();
+    }else{
+        alert("Unable to delete / Det gick inte att ta bort")
     }
 }
