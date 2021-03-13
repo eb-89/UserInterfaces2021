@@ -20,16 +20,6 @@ export default class Content {
         return content;
     }
 
-//test function used for adding orders
-    // addOrderFunc = () => {
-
-    //         this.data.addOrder(4, [{item: "beer", price: "42"}]);
-
-    //         this.data.addOrder(5, [{item: "drink", price: "89"}]);
-
-    //         this.data.addOrder(5, [{item: "beer", price: "39"},{item: "wine", price: "49"}]);
-    // }
-
     /**
      * Creates the box containing all orders 
      * @returns A box containing  order-cards
@@ -37,7 +27,7 @@ export default class Content {
     allOrders = () => {
         let all_orders = $('<div id="all-orders"></div>');
 
-        /* Order items */
+        /* Order items box*/
         let orders = $('<div  id="orders"></div>');
         let header_order = $('<div class="header-order"><span data-textid="order-header-order"></span></div>');
         let cont_orders = $('<div  id="orders-container"></div>');
@@ -45,7 +35,7 @@ export default class Content {
         $(orders).append(header_order);
         $(orders).append(cont_orders);
         
-        /* Delivered order items */
+        /* Delivered order items box*/
         let del_orders = $('<div  id="delivered-orders"></div>');
         let header_del = $('<div class="header-delivered"><span data-textid="order-header-delivered"></span></div>');
         let cont_del_orders = $('<div id="delivered-orders-container" ></div>');
@@ -55,58 +45,91 @@ export default class Content {
         
         $(all_orders).append(orders);
         $(all_orders).append(del_orders);
-
+    
+        /*Creats one order card for each order in the database*/
         for (let i = 0; i < this.orders.length; i++){
-            $(cont_orders).append(this.createOrderCard( this.orders[i], i));
-        }
+                if(this.orders[i].delivered == "false"){
+                    $(cont_orders).append(this.createOrderCard(this.orders[i], this.orders[i].id));
+                }
+                else{
+                    $(cont_del_orders).append(this.createOrderCard(this.orders[i], this.orders[i].id));
+                }
+        } 
 
+        /*Prevent standars handling of drag and drop*/
+        $(cont_orders).on("dragover", (ev) => {
+            ev.preventDefault();
+        });
+
+        /*When an order is dropped in the box containing non delivered orders,
+        call function changeDeliveredStatus to update the delivered status to false*/
         $(cont_orders).on("drop", (ev) => {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
 
-            if(ev.target.id === "orders-container"){
-                ev.target.appendChild(document.getElementById(data));
-                ev.stopPropagation(); 
-            }
-           
+            if(ev.target.id == "orders-container"){  
+               changeDeliveredStatus(data, "false");  
+            }       
         });
 
-        $(cont_orders).on("dragover", (ev) => {
+        /*Prevent standars handling of drag and drop*/
+        $(cont_del_orders).on("dragover", (ev) => {
             ev.preventDefault();
-            ev.stopPropagation();
         });
 
+        /*When an order is dropped in the box containing delivered orders,
+        call function changeDeliveredStatus to update the delivered status to true*/
         $(cont_del_orders).on("drop", (ev) => {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
 
-            if(ev.target.id === "delivered-orders-container"){
-                ev.target.appendChild(document.getElementById(data));
-                ev.stopPropagation(); 
-            }
-           
+            if(ev.target.id == "delivered-orders-container"){  
+               changeDeliveredStatus(data, "true");  
+            }       
         });
 
-        $(cont_del_orders).on("dragover", (ev) => {
-            ev.preventDefault();
-            ev.stopPropagation();
-        });
+        /*Updates the delivered status for the order*/
+        let changeDeliveredStatus = (orderId, delivered) => {
+            for (let i = 0; i < this.orders.length; i++) {
+                if (Number(orderId) == this.orders[i].id) {
+                    this.orders[i].delivered = delivered;
+                    updateView(this.orders[i]);
+                    break;
+                } 
+            }   
+        }
+
+        /*Update the view when an order card has been moved*/
+        let updateView = (orderDrop) => {
+
+            let orderCard = document.getElementById(orderDrop.id);
+            
+            if(orderDrop.delivered == "false"){
+                $(cont_del_orders).remove(orderCard);
+                $(cont_orders).append(orderCard);
+            }
+            else{
+                $(cont_orders).remove(orderCard);
+                $(cont_del_orders).append(orderCard);
+            }
+        }
 
         return all_orders;
     }
     
+
     /**
-     * Creates the box the box containing an order card
-     * @returns A box containing an order card
+     * Creates the box the box containing an order-card
+     * @returns A box containing an order-card
      */
     createOrderCard = (order_cont,id) => {
         let cont_card = $('<div draggable="true" id="' + id + '" class="container-card"></div>');
         let card = $('<div class="order-card"></div>');
         let content_card = $('<div class="content-card"></div>');
 
+        /*Get the id for the order that is being dragged*/
         $(cont_card).on("dragstart", (ev) => {
             ev.originalEvent.dataTransfer.setData("text", ev.target.id);
-            ev.stopPropagation();
         });
 
         let table = $('<div class="container-table">'+
@@ -137,8 +160,8 @@ export default class Content {
     }
 
     /**
-     * Creates the box containing the ordered items from one order
-     * @returns A box containing the items from one order
+     * Creates the box containing the ordered items for one order
+     * @returns A box containing the items for one order
      */
     addItems = (product) => {
        let item_cont = $('<div class="container-items"></div>');

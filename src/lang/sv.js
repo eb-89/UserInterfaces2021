@@ -23,7 +23,11 @@ export const sv = {
   "prod-disable": "Ta bort produkt",
   "prod-enable": "Lägg till produkt",
   "prod-change_stk": "Ändra lagerantal",
-  "prod-change_stk-conf": "Bekräfta ändring i lagerantal",
+  "prod-change_stk-conf": "Bekräfta lagerantal",
+  "prod-change-price": "Ändra pris",
+  "prod-price-change": "Pris",
+  "prod-change-price-conf": "Bekräfta pris",
+  "prod-price-sek": " kr",
 
   "login-title": "Logga in",
   "login-username": "Användarnamn",

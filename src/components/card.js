@@ -79,7 +79,9 @@ export default class Card {
 
         $(name_wrp).append(name);
 
-        let price = $('<div class="title">' + response.pris + "kr</div>");
+        let price = $('<div id="card-price-'+response.id + '" class="title">' + response.pris + '<span data-textid="prod-price-sek"></span></div>');
+
+        window.lang.generateStrings(price);
 
         $(desc_wrp).append(name_wrp);
         $(desc_wrp).append(price);
@@ -187,6 +189,13 @@ export default class Card {
                 '</div>'
             );
 
+             let price_change = $(
+                '<div class="product-text-wrp">' +
+                    '<div class="subtitle bold"><span data-textid="prod-price-change"></span>:</div>' +
+                    '<form id="price-'+response.id + '"><input type="text" name="price_change" class="price-change-input" value="' + response.pris + '" disabled /></form>'+
+                '</div>'
+            );
+
             let btn_wrp = $('<div class="expanded-btn-wrp"></div>');
 
             /**
@@ -226,6 +235,36 @@ export default class Card {
                 window.lang.generateStrings(change_stk);
             });
 
+            /**
+             * Changes the price of a product
+             */
+            let change_price = $('<div class="button-mar button-on-light"><span data-textid="prod-change-price"></span></div>')
+            $(btn_wrp).append(change_price);
+
+
+            $(change_price).on('click', function() {
+                if($(price_change).find("#" + "price-" +response.id).find('input').prop('disabled')){
+                    $(price_change).find("#" + "price-" +response.id).find('input').prop('disabled', false);
+                    $(change_price).find('span').attr('data-textid', 'prod-change-price-conf');    
+                }
+                else{
+                    response.pris = $(price_change).find('input').val();
+                    updatePrice();
+                    $(price_change).find("#" + "price-" +response.id).find('input').prop('disabled', true);
+                    $(change_price).find('span').attr('data-textid', 'prod-change-price');
+                }
+                window.lang.generateStrings(change_price);
+            });
+
+            //Updates the visisble price of a product 
+            let updatePrice = () => {
+                var cardPrice = $('#card-price-'+response.id+'' );
+                $(cardPrice).empty();
+                $(cardPrice).append(response.pris + '<span data-textid="prod-price-sek"></span>');
+                window.lang.generateStrings(cardPrice);
+            }
+
+            $(desc_expanded).append(price_change);
             $(desc_expanded).append(stock_amount);
             $(desc_expanded).append(btn_wrp);
         }
