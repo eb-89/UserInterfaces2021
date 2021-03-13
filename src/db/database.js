@@ -13,6 +13,7 @@ export default class Database {
     constructor(DB, DB2) {
         this.DB = DB;
         this.DB2 = DB2;
+        this.amountDrinks = 500;
     }
 
     allUserNamesPasswords() {
@@ -146,17 +147,29 @@ export default class Database {
         return collector;
     }
 
-    // =====================================================================================================
-    // Returns a list of all the beverages:
-    // returns: 
-    //
-    allBeveragesMoreDetailed() {
+    /**
+     * Returns a list of beverages and some information about them
+     * If drinktype is set, it will return the beverages with the specific drink type.
+     * @param {string} drinktype 
+     * @returns A list of JSON objects containing information about beverages
+     */
+    allBeveragesMoreDetailed(drinktype) {
         // Using a local variable to collect the items.
         let collector = []
 
-        for (let i = 0; i < this.DB2.spirits.length; i++) {
-            collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].artikelid, this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
-                this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning));
+        if(drinktype != null){
+            for (let i = 0; i < this.DB2.spirits.length; i++) {
+                if(this.DB2.spirits[i].varugrupp == drinktype){
+                    collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].artikelid, this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
+                        this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning));
+                }
+            }
+        }
+        else {
+            for (let i = 0; i < this.DB2.spirits.length; i++) {
+                collector.push(this.__allBeveragesMoreDetailed(this.DB2.spirits[i].artikelid, this.DB2.spirits[i].namn, this.DB2.spirits[i].prisinklmoms, this.DB2.spirits[i].varugrupp, 
+                    this.DB2.spirits[i].ursprunglandnamn, this.DB2.spirits[i].producent, this.DB2.spirits[i].alkoholhalt, this.DB2.spirits[i].forpackning));
+            }
         }
 
         // The DB is stored in the variable DB2, with "spirits" as key element. If you need to select only certain
@@ -214,7 +227,7 @@ export default class Database {
     beverageTypes() {
         var types = [];
         for (let i = 0; i < this.DB2.spirits.length; i++) {
-            addToSet(types, this.DB2.spirits[i].varugrupp);
+            this.addToSet(types, this.DB2.spirits[i].varugrupp);
         }
         return types;
     }

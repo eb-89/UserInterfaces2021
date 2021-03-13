@@ -49,4 +49,11 @@ export const sv = {
   "help-order-string" : "För att beställa en öl, klicka på ölen.",
   "help-security-string": "Du kan rapportera säkerhetsproblem under \"Säkerhetsproblem\". ",
   "help-staff-string" : "Du kan ombeställa genom att klicka \"ombeställ\" under \"order\". ",
+
+  "pagination-prev": "Före",
+  "pagination-next": "Nästa",
+
+  "dropdown-products": "Visa antal",
+  "dropdown-filter": "Filtrera",
+  "dropdown-reset": "Ta bort filtrering",
 }

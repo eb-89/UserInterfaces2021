@@ -18,7 +18,6 @@ import SecurityData from "./db/SecurityData.js"; // database containing reported
 import Database from "./db/database.js"; // database functions
 import OrdersData from "./db/OrdersData.js";
 
-
 import Lang from "./lang/lang.js";
 
 window.Database = null;
@@ -35,6 +34,11 @@ export default class App {
             { path: "/products", component: ProductsPage, title: "Products" },
         ]);
         this.state = JSON.parse(localStorage.getItem("state")) || { users: DB };
+
+        /**
+         * Sets the localstorage variable 'loggedInUser' to empty string from the beginning.
+         */
+        localStorage.setItem('loggedInUser', '');
 
         /**
          * Sets a global variable "window.Database" which holds the functions that communicates with the DB/DB2-files.
