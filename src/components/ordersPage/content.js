@@ -12,10 +12,7 @@ export default class Content {
     }
 
     init = () => {
-    window.OrdersData.addOrder(1, {delivered:"true"})
-    this.orders[0].delivered ="true"
-    window.OrdersData.addOrder(2, {test:"test2"})
-    window.OrdersData.addOrder(3, {test:"test3"})
+
     }
 
 
