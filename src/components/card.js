@@ -248,8 +248,7 @@ export default class Card {
                     $(change_price).find('span').attr('data-textid', 'prod-change-price-conf');    
                 }
                 else{
-                    var newPrice = $('.price-change-input').val();
-                    response.pris = newPrice;
+                    response.pris = $(price_change).find('input').val();
                     updatePrice();
                     $(price_change).find("#" + "price-" +response.id).find('input').prop('disabled', true);
                     $(change_price).find('span').attr('data-textid', 'prod-change-price');
@@ -260,8 +259,9 @@ export default class Card {
             //Updates the visisble price of a product 
             let updatePrice = () => {
                 var cardPrice = $('#card-price-'+response.id+'' );
-                var test = cardPrice[0].innerHTML = response.pris + "kr";
-                console.log(test);
+                $(cardPrice).empty();
+                $(cardPrice).append(response.pris + '<span data-textid="prod-price-sek"></span>');
+                window.lang.generateStrings(cardPrice);
             }
 
             $(desc_expanded).append(price_change);
