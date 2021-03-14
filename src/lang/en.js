@@ -64,7 +64,7 @@ export const en = {
 
   "orderNewItemButton" : "+ OrderNewItem",
   "AdminIDLabel" : "Admin ID :",
-  "BeerIDLabel" : "Beer ID",
+  "BeerIDLabel" : "Drink ID",
   "PriceIDLabel" : "Price",
   "AmountIDLabel" : "Amount",
   "UpdateButtonID" : "Update",

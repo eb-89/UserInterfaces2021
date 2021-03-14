@@ -64,7 +64,7 @@ export const sv = {
 
   "orderNewItemButton" : "+ beställNyArtikel",
   "AdminIDLabel" : "Administratörs-ID",
-  "BeerIDLabel" : "öl-ID",
+  "BeerIDLabel" : "dryck-ID",
   "PriceIDLabel" : "Pris",
   "AmountIDLabel" : "Belopp",
   "UpdateButtonID" : "uppdatering",

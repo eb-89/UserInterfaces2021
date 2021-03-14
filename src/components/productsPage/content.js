@@ -15,17 +15,17 @@ export default class Content {
         $(content).append(this.createOrderButton());
         $(content).append(this.createEditDialog());
         $(content).append(this.listBoughtItems());
-        
+        window.lang.generateStrings(content);
         return content;
     }
+    // this function will create button to order new item
     createOrderButton=()=>
     {
-        //<span data-textid = "orderNewItemButton"></span>
-
-
+       
       var orderButton = '<button id = "orderBtn" onclick = "onClick_CreateOrder()"> <span data-textid = "orderNewItemButton"></span></button>';
       return orderButton;  
     }
+    // This function will generate the dialog box to edit and order bought items 
     createEditDialog = () => {
 
         var modal = '<div class="modal-content">';
@@ -33,6 +33,7 @@ export default class Content {
         modal += '<span class="close"><button id = "closeBtn" type="button" onclick="OnCloseDialog()">X</button></span>';
         modal += ' <h4 id ="modalHeader"><span data-textid = "UpdateHeaderlabel"></span><span data-textid = "OrderNewHeaderlabel"></span></h4>';
         modal += '</div>';
+
         modal += '<div class="modal-body">';
         modal += ' <input type = "hidden" id = "tf_transactionid"/>';
         modal += ' <label><span data-textid = "AdminIDLabel"></span></label><input type = "text" id = "tf_adminid"/><br/>';
@@ -42,6 +43,7 @@ export default class Content {
         modal += '<Button type ="button" id = "update_stock_button" onclick = "OnUpdateStock()"><span data-textid = "UpdateButtonID"></span></button>';
         modal += '<Button type ="button" id = "add_stock_button" onclick = "onCreateNewOrder()"><span data-textid = "SaveButtonID"></span></button>';
         modal += '</div>';
+
         modal += '<div class="modal-footer"></div>'
         modal += '</div></div>';
        
