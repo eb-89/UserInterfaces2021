@@ -52,6 +52,24 @@ min-height:90%;
   margin:0.7rem;
 }
 
+.container-table.right {
+  width: 90%;
+  justify-content: flex-end;
+}
+
+.undoRedoButton {
+  background-color: #f1e9cd;
+  color: black;
+  padding: 5px; 
+  margin: 0 2px; 
+  cursor: pointer;
+}
+
+.undoRedoButton.notavailable {
+  pointer-events: none;
+  background-color: gray;
+}
+
 .txt-table, .txt-time{
   padding-right:0.3rem;
 }

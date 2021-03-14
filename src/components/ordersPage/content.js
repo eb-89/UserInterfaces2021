@@ -2,19 +2,24 @@
  * This page will create all the content of the Orders-page (views/orders.js)
  */
 
+import UndoRedo from "../undoRedo.js";
+
 export default class Content {
     constructor() {
         this.data = window.OrdersData;
-        this.orders = window.OrdersData.data;
+        this.orders = window.OrdersData.data
+        this.undoRedo = new UndoRedo();
     }
 
     init = () => {
- 
+
     }
+
 
 
     render = () => {
         var content = $('<div class="content-container"></div>');
+        $(content).append(this.createUndoRedo());
         $(content).append(this.allOrders());
         window.lang.generateStrings(content);
         return content;
@@ -67,8 +72,20 @@ export default class Content {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
 
-            if(ev.target.id == "orders-container"){  
-               changeDeliveredStatus(data, "false");  
+            if(ev.target.id == "orders-container"){
+
+                let funObj = {
+                    execute: {
+                        fun: changeDeliveredStatus,
+                        args: [data, "false"]
+                    },
+                    unexecute: {
+                        fun: changeDeliveredStatus,
+                        args: [data, "true"]
+                    }
+                }
+                this.undoRedo.doit(funObj);
+                this.updateUndoRedo()
             }       
         });
 
@@ -84,8 +101,20 @@ export default class Content {
             var data = ev.originalEvent.dataTransfer.getData("text");
 
             if(ev.target.id == "delivered-orders-container"){  
-               changeDeliveredStatus(data, "true");  
-            }       
+
+                let funObj = {
+                    execute: {
+                        fun: changeDeliveredStatus,
+                        args: [data, "true"]
+                    },
+                    unexecute: {
+                        fun: changeDeliveredStatus,
+                        args: [data, "false"]
+                    }
+                }
+                this.undoRedo.doit(funObj);
+                this.updateUndoRedo()
+            }
         });
 
         /*Updates the delivered status for the order*/
@@ -99,9 +128,12 @@ export default class Content {
             }   
         }
 
+
+
+
+
         /*Update the view when an order card has been moved*/
         let updateView = (orderDrop) => {
-
             let orderCard = document.getElementById(orderDrop.id);
             
             if(orderDrop.delivered == "false"){
@@ -173,4 +205,54 @@ export default class Content {
 
        return item_cont;
     }
+
+
+    createUndoRedo = () => {
+
+        let svgUndo = '<svg width=50 height=30 viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">'+ 
+            '<path d="M8 15 l 30 -10 v 20 z" stroke="#341001" stroke-width=5 fill="none"/>' + 
+        '</svg>'
+        let svgRedo = '<svg width=50 height=30 viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">'+
+            '<g transform="scale(-1, 1) translate(-50, 0)">' + 
+            '<path d="M8 15 l 30 -10 v 20 z" stroke="#341001" stroke-width=5 fill="none"/>' +
+            '</g>' + 
+        '</svg>'
+
+        let undo = $('<div id="undoBtn" class="undoRedoButton"></div>').click(() => {
+            this.undoRedo.undoit()
+            this.updateUndoRedo()
+        })
+        undo.append(svgUndo)
+
+        let redo = $('<div id="redoBtn" class="undoRedoButton"></div>').click(() => {
+            this.undoRedo.redoit()
+            this.updateUndoRedo()
+        })
+        redo.append(svgRedo)
+
+        let container = $('<div class="container-table right"></div>');
+
+        container.append(undo);
+        container.append(redo);
+
+        if (!this.undoRedo.isUndo()) { undo.addClass("notavailable") }
+        if (!this.undoRedo.isRedo()) { redo.addClass("notavailable") }
+
+        return container;
+    }
+
+    updateUndoRedo = () => {
+        if (!this.undoRedo.isUndo()) {
+            $("#undoBtn").addClass("notavailable")
+        } else {
+            $("#undoBtn").removeClass("notavailable")
+        }
+
+        if (!this.undoRedo.isRedo()) {
+            $("#redoBtn").addClass("notavailable")
+        } else {
+            $("#redoBtn").removeClass("notavailable")
+        }
+    }
+
 }
