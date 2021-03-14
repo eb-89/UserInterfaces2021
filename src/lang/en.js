@@ -4,7 +4,7 @@ export const en = {
   "sec-error-msg": "Please insert your grievance",
   "sec-title": "Report Security Issue",
 
-  "nav-products": "Products",
+  "nav-menu": "Menu",
   "nav-help": "Help",
   "nav-login": "Log in",
   "nav-security": "Security",

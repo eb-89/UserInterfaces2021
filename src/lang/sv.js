@@ -4,7 +4,7 @@ export const sv = {
   "sec-error-msg": "Var god ange ditt klagomål",
   "sec-title": "Anmäl säkerhetsproblem",
 
-  "nav-products": "Produkter",
+  "nav-menu": "Meny",
   "nav-help": "Hjälp",
   "nav-login": "Logga in",
   "nav-security": "Säkerhet",

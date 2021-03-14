@@ -74,7 +74,7 @@ export default class Header {
     createNavigationObjects = () => {
         let menu_wrp = $('<ul id="menu"></ul>');
 
-        let mainButton = $('<li class="menu-button"><span data-textid="nav-products"></span></li>');
+        let mainButton = $('<li class="menu-button"><span data-textid="nav-menu"></span></li>');
         $(mainButton).on("click", () => {
             history.pushState("Main", "/");
         });
