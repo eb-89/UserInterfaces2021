@@ -13,15 +13,25 @@ export default class Database {
     constructor(DB, DB2) {
         this.DB = DB;
         this.DB2 = DB2;
-        this.amountDrinks = 500;
+
+        //exposing function to global space, to use in Manager.js file
+        window.getBoughtItemByTransectionId = this.getBoughtItemByTransectionId;
+        window.updateBoughtItem = this.updateBoughtItem;
+        window.orderNewItem = this.orderNewItem;
+        window.getTransactionID = this.getTransactionID;
+        window.deleteBoughtTransaction = this.deleteBoughtTransaction;
+        window.getRemainingStock = this.getRemainingStock;
     }
 
     allUserNamesPasswords() {
         var nameCollect = [];
-        
+
         for (let i = 0; i < this.DB.users.length; i++) {
-            var user = {username: this.DB.users[i].username, password: this.DB.users[i].password};
-            nameCollect.push(user);  
+            var user = {
+                username: this.DB.users[i].username,
+                password: this.DB.users[i].password,
+            };
+            nameCollect.push(user);
         }
         return nameCollect;
     }
@@ -58,24 +68,38 @@ export default class Database {
 
         // This is the way to add the details you want from the db into your own data structure.
         // If you want to change the details, then just add or remove items accordingly below.
-        userCollect = this.__userDetails(this.DB.users[userIndex].user_id, this.DB.users[userIndex].credentials, this.DB.users[userIndex].username,
-                this.DB.users[userIndex].first_name, this.DB.users[userIndex].last_name, this.DB.users[userIndex].email, account);
+        userCollect = this.__userDetails(
+            this.DB.users[userIndex].user_id,
+            this.DB.users[userIndex].credentials,
+            this.DB.users[userIndex].username,
+            this.DB.users[userIndex].first_name,
+            this.DB.users[userIndex].last_name,
+            this.DB.users[userIndex].email,
+            account
+        );
 
         return userCollect;
     }
 
-    __userDetails(user_id, credentials, username, first_name, last_name, email, balance) {
+    __userDetails(
+        user_id,
+        credentials,
+        username,
+        first_name,
+        last_name,
+        email,
+        balance
+    ) {
         let collectorJSON = {
-                            "userID": user_id, 
-                            "credentials": credentials, 
-                            "username": username, 
-                            "firstName": first_name, 
-                            "lastName": last_name,
-                            "email": email,
-                            "balance": balance
-                            };
+            userID: user_id,
+            credentials: credentials,
+            username: username,
+            firstName: first_name,
+            lastName: last_name,
+            email: email,
+            balance: balance,
+        };
         return collectorJSON;
-
     }
 
     // =====================================================================================================
@@ -141,7 +165,10 @@ export default class Database {
         // items, you may introduce filter functions in the loop... see the template within comments.
         //
         for (let i = 0; i < this.DB2.spirits.length; i++) {
-            collector.push([this.DB2.spirits[i].namn, this.DB2.spirits[i].varugrupp]);
+            collector.push([
+                this.DB2.spirits[i].namn,
+                this.DB2.spirits[i].varugrupp,
+            ]);
         }
         //
         return collector;
@@ -155,7 +182,7 @@ export default class Database {
      */
     allBeveragesMoreDetailed(drinktype) {
         // Using a local variable to collect the items.
-        let collector = []
+        let collector = [];
 
         if(drinktype != null){
             for (let i = 0; i < this.DB2.spirits.length; i++) {
@@ -176,20 +203,19 @@ export default class Database {
         // items, you may introduce filter functions in the loop... see the template within comments.
         return collector;
     }
-    
-    __allBeveragesMoreDetailed(id, namn, pris, varugrupp, land, producent, alkoholhalt, forpackning) {
-        let collectorJSON = {
-                            "id": id,
-                            "namn": namn, 
-                            "pris": pris, 
-                            "varugrupp": varugrupp, 
-                            "land": land, 
-                            "producent": producent,
-                            "alkoholhalt": alkoholhalt,
-                            "forpackning": forpackning
-                            };
-        return collectorJSON;
 
+    __allBeveragesMoreDetailed(id,namn,pris,varugrupp,land,producent,alkoholhalt,forpackning) {
+        let collectorJSON = {
+            id: id,
+            namn: namn,
+            pris: pris,
+            varugrupp: varugrupp,
+            land: land,
+            producent: producent,
+            alkoholhalt: alkoholhalt,
+            forpackning: forpackning,
+        };
+        return collectorJSON;
     }
 
     // =====================================================================================================
@@ -211,7 +237,10 @@ export default class Database {
             if (percentToNumber(this.DB2.spirits[i].alkoholhalt) > strength) {
                 // The key for the beverage name is "namn", and beverage type is "varugrupp".
                 //
-                collector.push([this.DB2.spirits[i].namn, this.DB2.spirits[i].varugrupp]);
+                collector.push([
+                    this.DB2.spirits[i].namn,
+                    this.DB2.spirits[i].varugrupp,
+                ]);
             }
         }
 
@@ -248,5 +277,95 @@ export default class Database {
     //
     percentToNumber(percentStr) {
         return Number(percentStr.slice(0, -1));
+    }
+
+    // This function will return the array of 'Bought' entries from Database
+    getBoughtItems() {
+        return this.DB.bought;
+    }
+
+    // This function will return the details of bought item matching with the 'transectionID'
+    getBoughtItemByTransectionId(transectionID) {
+        for (let i = 0; i < window.Database.DB.bought.length; ++i) {
+            if (window.Database.DB.bought[i].transaction_id == transectionID) {
+                return window.Database.DB.bought[i];
+            }
+        }
+    }
+
+    // This function will update the details of bought item with new info from arguments
+    updateBoughtItem(transactionID, beerID, adminID, amount, price) {
+        for (let i = 0; i < window.Database.DB.bought.length; i++) {
+            if (window.Database.DB.bought[i].transaction_id == transactionID) {
+                window.Database.DB.bought[i].admin_id = adminID;
+                window.Database.DB.bought[i].beer_id = beerID;
+                window.Database.DB.bought[i].amount = amount;
+                window.Database.DB.bought[i].price = price;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // This function will add a new bought item in the Database
+    orderNewItem(beerID, adminID, amount, price) {
+        var date = new Date().toISOString().substr(0, 19);
+        date = date.replace("T", " ");
+
+        var transaction = {
+            transaction_id: window.getTransactionID(),
+            admin_id: adminID,
+            beer_id: beerID,
+            amount: amount,
+            price: price,
+            timestamp: date,
+        };
+
+        window.Database.DB.bought.push(transaction);
+        return true;
+    }
+
+    // this function generateS transaction_id BY GETTING THE LAST transaction_id AND INCREMENTING IT BY 1.
+    getTransactionID() {
+        let length = window.Database.DB.bought.length;
+        var lastID = window.Database.DB.bought[length - 1].transaction_id;
+
+        return parseInt(lastID) + 1;
+    }
+
+    // This function will delete the item from bought array
+    deleteBoughtTransaction(transactionID) {
+        var index = 0;
+
+        for (let i = 0; i < window.Database.DB.bought.length; ++i) {
+            if (window.Database.DB.bought[i].transaction_id == transactionID) {
+                window.Database.DB.bought.splice(i, 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // A function to calculate stock
+    getRemainingStock(itemID) {
+        //itemID = "167903";
+        let totalsold = 0;
+        let totalbought = 0;
+
+        // Calculate total bought quantity
+        for(let i=0;i<window.Database.DB.bought.length;++i) {
+            if (window.Database.DB.bought[i].beer_id == itemID) {
+                totalbought += parseInt(window.Database.DB.bought[i].amount);
+            }
+        }
+
+        // calculate how many times the item was sold
+        for (let i = 0; i < window.Database.DB.sold.length; ++i) {
+            if (window.Database.DB.sold[i].beer_id == itemID) {
+                totalsold++;
+            }
+        }
+
+        return totalbought - totalsold;
     }
 }

@@ -1,0 +1,169 @@
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  max-width:100%;
+  background-color: #f1e9cd;
+  
+}
+
+td, th {
+  border: 1px solid #341001;
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #fdefbd;
+}
+
+#dialog
+{
+    position:fixed;
+    background-color:#f1e9cd;
+    width :250px;
+    height: 250px;
+    border: 2px solid black; 
+}
+
+#dialog_Header
+{   
+padding: 2px 4px;
+text-align: center;
+background-color: #5cb85c;
+color: #f1e9cd;
+}
+
+
+.modal-content {
+    display: none;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+   /* border: 1px solid #888;*/
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .close,#closeBtn:hover,
+  .close,#closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #closeBtn,#update_stock_button
+  {
+    background-color: white;
+    color: black;
+    
+    border-radius: 10%;
+    font-size: 16px;
+    cursor: pointer;
+    
+  }
+  #update_stock_button,#add_stock_button
+  {
+    border-radius: 5% !important;
+    background-color: #341001;
+    color: #fefefe;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+  }
+
+  #update_stock_button,#add_stock_button:hover
+  {
+    background-color:#341001;
+    color: #fefefe;
+  }
+  #editButton
+  {
+    background-color:#fefefe ;
+    color:#341001;
+    border :1px solid;
+  }
+  #deleteButton
+  {
+    background-color: #a72424;
+    color: cornsilk;
+    border: 1px solid black;
+    padding: 2px;
+  }
+  .modal-header {
+    padding: 2px 2px;
+    background-color: #341001;
+    color: #fefefe;
+    text-align: center;
+    max-height: 90px;
+    
+  }
+  
+  .modal-body {
+    padding: 2px 16px;
+    background-color: #fcf8ec;
+  }
+  
+  .modal-footer {
+    padding: 2px 8px 8px;
+    background-color: #341001;
+    color: white;
+    max-height: 20px;
+    text-align: center;
+    
+  }
+  input[type=text], select {
+    width: 100%;
+    padding: 5px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #orderBtn
+  {
+    background-color: #f1e9cd;
+    padding: 8px;
+    color: #341001;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left:50%;
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-color:#341001 ;
+    
+  }
+  caption{
+    font-family: 'Courier New', Courier, monospace;
+    color: #f1e9cd;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #552009;
+   
+    
+  }
