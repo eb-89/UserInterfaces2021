@@ -22,7 +22,9 @@ export default class Content {
         return content;
     }
 
-
+    /**
+     *  Creates Sidebar
+     */
     createSidebar = () => { 
         var content = $('<div id="sec-list" class="area col dbordered light"></div>');
 
@@ -66,15 +68,20 @@ export default class Content {
 
         return content;
     }
-
+    /**
+     *  Creates Page Heading
+     */
     createTitle = () => {
         var content = $(
             '<div class="heading light">' +
-                '<p>Security issues</p>  '+
+                '<p><span data-textid="sec-admin-header"></span></p>  '+
             '</div>')
+        window.lang.generateStrings(content)
         return content
     }
-
+    /**
+     *  Creates body section to display each message
+     */
     createDisplay = () => { 
         var content = $('<div id="sec-content" class="area show dbordered light"></div>');
         return content;

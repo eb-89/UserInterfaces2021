@@ -1,5 +1,5 @@
 /**
- * This page will create all the content of the About Us-page (views/aboutus.js)
+ * This page will create all the content of the Help-page (views/aboutus.js)
  */
 
 export default class Content {
@@ -18,6 +18,9 @@ export default class Content {
         return content;
     }
 
+    /**
+     *  Creates the page title
+     */
     createTitle = () => {
         var content = $(
             '<div class="heading light">' +
@@ -25,7 +28,9 @@ export default class Content {
             '</div>')
         return content
     }
-
+    /**
+     *  Creates container for the help section
+     */
     createHelpContainer = () => {
         var content = $(
             '<div class="help-container"></div>')
@@ -34,29 +39,53 @@ export default class Content {
         content.append(this.createHelpBody())
         return content
     }
-
+    /**
+     *  Creates help body
+     */
     createHelpBody = () => {
         var content = $(
-            '<div id="help-body"></div>')
+            '<div id="help-body">' + 
+                '<div>' + 
+                    '<span data-textid="help-general-string1"></span> <br><br>' + 
+                    '<span data-textid="help-general-string2"></span> <br><br>' + 
+                ' </div>' +
+            '</div>')
         return content
     }
-
+    /**
+     *  Creates sublinks for the subnavigation
+     */
     createSublink(string) {
 
         let HTMLBody;
         let headerString;
         switch (string) {
-            case "howtoorder":
-                headerString = "How to order"
-                HTMLBody = $('<div><span data-textid="help-order-string"></span></div>')
+            case "general":
+                headerString = "<span data-textid='help-general-header'></span>"
+                HTMLBody = 
+                '<div>' + 
+                    '<span data-textid="help-general-string1"></span> <br><br>' + 
+                    '<span data-textid="help-general-string2"></span> <br><br>' + 
+                ' </div>'
                 break;
-            case "security":
-                HTMLBody = $('<div><span data-textid="help-security-string"></span></div>')
-                headerString = "Security"
+            case "VIP":
+                headerString = '<span data-textid="help-vip-header"></span>'
+                HTMLBody = 
+                '<div>' + 
+                    '<span data-textid="help-vip-string1"></span> <br><br> ' + 
+                    '<span data-textid="help-vip-string2"></span> <br><br> ' + 
+                    '<span data-textid="help-vip-string3"></span> <br><br> ' + 
+                ' </div>'
                 break;
             case "staff":
-                headerString = "Staff"
-                HTMLBody = '<div><span data-textid="help-staff-string"></span></div>'
+                headerString = '<span data-textid="help-staff-header"></span>'
+                HTMLBody = 
+                '<div>' + 
+                    '<span data-textid="help-staff-string1"></span> <br><br> ' + 
+                    '<span data-textid="help-staff-string2"></span> <br><br> ' + 
+                    '<span data-textid="help-staff-string3"></span> <br><br> ' + 
+                    '<span data-textid="help-staff-string4"></span> <br><br> ' + 
+                ' </div>'
                 break;
             default:
                 headerString = ""
@@ -74,12 +103,15 @@ export default class Content {
         return link;
     }
 
+    /**
+     *  Creates subnavigation
+     */
     createSubnavigator = () => {
         var content = $(
           '<div class="help-nav"></div>'
         )
-        content.append(this.createSublink("howtoorder"))
-        content.append(this.createSublink("security"))
+        content.append(this.createSublink("general"))
+        content.append(this.createSublink("VIP"))
         content.append(this.createSublink("staff"))
         return content;
     }
