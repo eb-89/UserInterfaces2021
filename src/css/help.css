@@ -21,12 +21,14 @@ Help Page
   margin: 0 20px;
   font-size: 20px;  
   margin-right: 20px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  border-bottom: 2px brown solid;
 }
 
 .help-nav > .link:hover {
   cursor: pointer;
-  color: red;
+  margin-bottom: 5px;
+  border-bottom: 5px brown solid;
 }
 
 #help-body {
