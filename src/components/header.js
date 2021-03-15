@@ -106,7 +106,7 @@ export default class Header {
         $(logoutButton).on("click", () => {
             localStorage.setItem('loggedInUser', '');
             // Redirect to main-page when logging out.
-            history.pushState("Main", "/");
+            history.pushState("Log in", "/log-in");
         });
 
         // Decides which button in the header that is active at a given time

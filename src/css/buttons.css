@@ -100,7 +100,7 @@ Expansion menu for product cards
     font-size: 13px;
 }
 
-.expansion-button.close:after {
+.expansion-button.close-exp:after {
     content: "\1431"; /* Unicode character for "minus" sign (-) */
 }
 

@@ -115,7 +115,7 @@ export default class Card {
 
         let close_btn_wrp = $('<div class="desc-btn-wrp"></div>');
 
-        let desc_close_btn = $('<div class="expansion-button close"></div>');
+        let desc_close_btn = $('<div class="expansion-button close-exp"></div>');
         $(close_btn_wrp).append(desc_close_btn);
         // Function for closing "More Info"
         $(desc_close_btn).on("click", function (event) {
