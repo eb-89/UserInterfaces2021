@@ -166,7 +166,7 @@ export default class Content {
 
         let table = $('<div class="container-table">'+
                         '<div class="txt-table"><span data-textid="order-table"></span>:</div>'+
-                        '<div class="table"> ' + order_cont.table + '</div>'+
+                        '<div class="table"> 4 </div>'+  /*Instead of 4 it should be: order_cont.table*/
                     '</div>');
 
         let time = $('<div class="container-time">'+
