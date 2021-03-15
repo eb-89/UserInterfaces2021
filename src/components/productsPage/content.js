@@ -36,10 +36,10 @@ export default class Content {
 
         modal += '<div class="modal-body">';
         modal += ' <input type = "hidden" id = "tf_transactionid"/>';
-        modal += ' <label><span data-textid = "AdminIDLabel"></span></label><input type = "text" id = "tf_adminid"/><br/>';
-        modal += ' <label><span data-textid = "BeerIDLabel"></span> </label><input type = "text" id = "tf_beerid"/><br/>';
-        modal += ' <label> <span data-textid = "PriceIDLabel"></span></label><input type = "text" id = "tf_price"/><br/>';
-        modal += ' <label><span data-textid = "AmountIDLabel"></span> </label><input type = "text" id = "tf_amount"/><br/>';
+        modal += ' <label><span data-textid = "AdminIDLabel"></span></label><input type = "text" class="prod-list-input" id = "tf_adminid"/><br/>';
+        modal += ' <label><span data-textid = "BeerIDLabel"></span> </label><input type = "text" class="prod-list-input" id = "tf_beerid"/><br/>';
+        modal += ' <label> <span data-textid = "PriceIDLabel"></span></label><input type = "text" class="prod-list-input" id = "tf_price"/><br/>';
+        modal += ' <label><span data-textid = "AmountIDLabel"></span> </label><input type = "text" class="prod-list-input" id = "tf_amount"/><br/>';
         modal += '<Button type ="button" id = "update_stock_button" onclick = "OnUpdateStock()"><span data-textid = "UpdateButtonID"></span></button>';
         modal += '<Button type ="button" id = "add_stock_button" onclick = "onCreateNewOrder()"><span data-textid = "SaveButtonID"></span></button>';
         modal += '</div>';
